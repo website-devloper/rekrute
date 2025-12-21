@@ -18,15 +18,18 @@ class HomeController extends Controller
     
     public function Home()
     {
-        $jobs = Job::all();
+        $jobs = Job::with('employer')->latest()->limit(6)->get();
     
         foreach ($jobs as $job) {
             $createdAt = Carbon::parse($job->created_at);
             $timeAgo = $createdAt->diffForHumans();
             $job->timeAgo = $timeAgo; 
         }
+
+        $categories = Job::select('job_category')->distinct()->limit(8)->get();
+        // Fallback or specific icons could be mapped, but let's just use the names for now
     
-        return view('home', compact('jobs'));
+        return view('home', compact('jobs', 'categories'));
     }
 
     public function About()
@@ -41,7 +44,7 @@ class HomeController extends Controller
 
     public function Jobs(Request $request)
     {
-        $query = Job::query();
+        $query = Job::query()->with('employer');
 
         if ($request->has('query') && $request->filled('query')) {
             $search = $request->input('query');
@@ -59,14 +62,26 @@ class HomeController extends Controller
             $query->where('city', 'like', "%{$location}%");
         }
 
-        $jobs = $query->paginate(12);
+        if ($request->has('category') && $request->filled('category')) {
+            $query->where('job_category', $request->category);
+        }
+
+        if ($request->has('type') && $request->filled('type')) {
+            $query->where('job_type', $request->type);
+        }
+
+        $jobs = $query->latest()->paginate(12);
 
         foreach ($jobs as $job) {
             $createdAt = Carbon::parse($job->created_at);
             $timeAgo = $createdAt->diffForHumans();
             $job->timeAgo = $timeAgo; 
         }
-        return view('find_job', compact('jobs'));
+
+        $categories = Job::select('job_category')->distinct()->pluck('job_category');
+        $jobTypes = Job::select('job_type')->distinct()->pluck('job_type');
+
+        return view('find_job', compact('jobs', 'categories', 'jobTypes'));
     }
 
     public function Companies()
