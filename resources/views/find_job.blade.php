@@ -1,86 +1,215 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('template')
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./find_job.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300&family=Lato&family=League+Spartan:wght@200&family=Roboto:wght@100&family=Rubik:wght@500&display=swap"
-        rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="/bootstrap-5.0.2-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/bootstrap-5.0.2-dist/js/bootstrap.min.js">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
-        </script>
-    <title>Document</title>
-</head>
-
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light ">
-        <div class="topnav container-fluid">
-            <a href="../index.html" class="logo"><img src="../image/logo1.png" alt="logo" width="150px"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a href="../index.html" class="anchor" aria-current="page">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../index.html" class="anchor" aria-current="page">Find Jobs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../index.html" class="anchor" aria-current="page">Find Candidates</a>
-                    </li>
-                </ul>
+@section('content')
+    <!-- Search Header -->
+    <section class="find-job-header reveal">
+        <div class="container">
+            <div class="header-content">
+                <h1 class="page-title">Find Your <span class="gradient-text">Dream Job</span></h1>
+                <p class="page-subtitle">Browse thousands of job openings from top companies</p>
+                
+                <!-- Search Form -->
+                <div class="job-search-box">
+                    <form action="#" class="search-form">
+                        <div class="input-group">
+                            <span class="input-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                            </span>
+                            <input type="text" placeholder="Job title, keywords, or company">
+                        </div>
+                        <div class="input-divider"></div>
+                        <div class="input-group">
+                            <span class="input-icon">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            </span>
+                            <input type="text" placeholder="City, state, or zip code">
+                        </div>
+                        <button type="submit" class="btn-search">Search Jobs</button>
+                    </form>
+                </div>
             </div>
-            <a href="../signup_signin/sign_in.html" class="split">Login</a>
-            <a href="../signup_signin/sign_up.html" class="split" id="Active">Register Now</a>
         </div>
-    </nav>
-    <div class="container">
-        <h1 class="text-center header">Get The <span style="color: #4540DB;">Right Job </span><br>You Deserve</h1>
-        <div class="cont">
-            <div class="search">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="search-1"> <img src="../image/search.png" alt="search"> <input type="text"
-                                placeholder="Search Title or Keyword">
+    </section>
+
+    <!-- Job Listings -->
+    <section class="jobs-listing-section reveal reveal-delay-200">
+        <div class="container">
+            <div class="listing-header">
+                <h2 class="results-count">Showing 200+ Jobs</h2>
+                <div class="sort-wrapper">
+                    <label>Sort by:</label>
+                    <select class="sort-select">
+                        <option>Most Relevant</option>
+                        <option>Newest</option>
+                        <option>Salary (High to Low)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="jobs-grid">
+                <!-- Job Card 1 -->
+                <div class="modern-job-card">
+                    <div class="job-card-header">
+                        <img src="/image/logo1.png" alt="Company Logo" class="company-logo">
+                        <span class="job-type-badge">Full Time</span>
+                    </div>
+                    <div class="job-card-body">
+                        <h3 class="job-title">Senior UX Designer</h3>
+                        <p class="company-name">TechCorp Inc.</p>
+                        <div class="job-meta">
+                            <span class="meta-item">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                New York, NY
+                            </span>
+                            <span class="meta-item">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                $120k - $150k
+                            </span>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div>
-                            <div class="search-2"> <img src="../image/location.png" alt="Location"> <input type="text"
-                                    placeholder="Search Location"> <button>Search</button>
-                            </div>
+                    <div class="job-card-footer">
+                        <div class="tags">
+                            <span class="tag-sm">Figma</span>
+                            <span class="tag-sm">Prototyping</span>
                         </div>
+                        <a href="#" class="btn-apply">Apply Now</a>
+                    </div>
+                </div>
+
+                <!-- Job Card 2 -->
+                <div class="modern-job-card">
+                    <div class="job-card-header">
+                        <div class="company-logo" style="background: #f0f0f0; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #666;">G</div>
+                        <span class="job-type-badge">Remote</span>
+                    </div>
+                    <div class="job-card-body">
+                        <h3 class="job-title">Frontend Developer</h3>
+                        <p class="company-name">Google</p>
+                        <div class="job-meta">
+                            <span class="meta-item">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                Remote
+                            </span>
+                            <span class="meta-item">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                $140k - $180k
+                            </span>
+                        </div>
+                    </div>
+                    <div class="job-card-footer">
+                        <div class="tags">
+                            <span class="tag-sm">React</span>
+                            <span class="tag-sm">TypeScript</span>
+                        </div>
+                        <a href="#" class="btn-apply">Apply Now</a>
+                    </div>
+                </div>
+
+                <!-- Job Card 3 -->
+                <div class="modern-job-card">
+                    <div class="job-card-header">
+                        <div class="company-logo" style="background: #000; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #fff;">N</div>
+                        <span class="job-type-badge">Full Time</span>
+                    </div>
+                    <div class="job-card-body">
+                        <h3 class="job-title">Product Manager</h3>
+                        <p class="company-name">Netflix</p>
+                        <div class="job-meta">
+                            <span class="meta-item">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                Los Gatos, CA
+                            </span>
+                            <span class="meta-item">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                $200k+
+                            </span>
+                        </div>
+                    </div>
+                    <div class="job-card-footer">
+                        <div class="tags">
+                            <span class="tag-sm">Product</span>
+                            <span class="tag-sm">Strategy</span>
+                        </div>
+                        <a href="#" class="btn-apply">Apply Now</a>
+                    </div>
+                </div>
+                 <!-- Job Card 4 -->
+                 <div class="modern-job-card">
+                    <div class="job-card-header">
+                        <div class="company-logo" style="background: #E1306C; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #fff;">I</div>
+                        <span class="job-type-badge">Contract</span>
+                    </div>
+                    <div class="job-card-body">
+                        <h3 class="job-title">Social Media Manager</h3>
+                        <p class="company-name">Instagram</p>
+                        <div class="job-meta">
+                            <span class="meta-item">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                                Remote
+                            </span>
+                            <span class="meta-item">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                $80k - $100k
+                            </span>
+                        </div>
+                    </div>
+                    <div class="job-card-footer">
+                        <div class="tags">
+                            <span class="tag-sm">Marketing</span>
+                            <span class="tag-sm">Social</span>
+                        </div>
+                        <a href="#" class="btn-apply">Apply Now</a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <br><br><br>
-<hr>
-<div id="container">
-    <h2 id="font">200 Jobs found</h2>
-    <div>
-       <p>Sort by freshness</p> 
-       <select name="sortbyfresh">
-        <option value="L2Mo">Last 2 Months</option>
-        <option value="LMo">Last Months</option>
-        <option value="LWe">Last Week</option>
-        <option value="L3D">Last 3 days</option>
-       </select>
-    </div>
-</div>
-</body>
+    </section>
 
-</html>
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top">
+        <svg class="scroll-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Scroll Animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Scroll to Top
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    scrollToTopBtn.classList.add('visible');
+                } else {
+                    scrollToTopBtn.classList.remove('visible');
+                }
+            });
+
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+@endsection
