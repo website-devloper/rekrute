@@ -54,13 +54,14 @@ Route::middleware('auth:candidate')->prefix('candidate')->group(function () {
 // Recruiter Routes
 Route::middleware('auth:employer')->prefix('employer')->group(function () {
     Route::controller(RecruiterController::class)->group(function () {
-        Route::get('/dashboard', 'dashboard')->name('dashboard.recruiter'); // Redirect to dashboard
+        Route::get('/dashboard', 'dashboard')->name('dashboard.recruiter');
+        Route::get('/profile', 'editProfile')->name('recruiter.profile');
+        Route::post('/profile', 'updateProfile')->name('recruiter.profile.update');
         
         // Job Management
         Route::get('/post-job', 'postJob')->name('post_job');
         Route::post('/post-job', 'storeJob')->name('jobs.store');
-        
-        // Other legacy routes mapped
-        Route::get('/manage-jobs', 'dashboard')->name('manage-jobs'); // Mapping to dashboard for now
+        Route::get('/job/{jobId}/applications', 'viewApplications')->name('jobs.applications');
+        Route::post('/application/{applicationId}/status', 'updateApplicationStatus')->name('applications.updateStatus');
     });
 });

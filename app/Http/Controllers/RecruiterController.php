@@ -29,25 +29,66 @@ class RecruiterController extends Controller
             'title' => 'required',
             'description' => 'required',
             'job_type' => 'required',
-            // Add other validations
         ]);
 
         Job::create([
             'title' => $request->title,
             'employer_id' => Auth::guard('employer')->id(),
-            // Map other fields
             'description' => $request->description,
             'city' => $request->city ?? 'Remote',
             'job_type' => $request->job_type,
             'minimum_salary' => $request->min_salary ?? 0,
             'maximum_salary' => $request->max_salary ?? 0,
-            'job_category' => 'General', // Default for now
-            'experience' => 'Entry Level', // Default for now
+            'job_category' => 'General',
+            'experience' => 'Entry Level',
             'country' => 'Unknown',
             'job_responsabilities' => 'TBD',
             'requirements' => 'TBD',
         ]);
 
         return redirect()->route('dashboard.recruiter')->with('success', 'Job Posted Successfully');
+    }
+
+    public function viewApplications($jobId)
+    {
+        $job = Job::where('employer_id', Auth::guard('employer')->id())->findOrFail($jobId);
+        $applications = application::where('job_id', $jobId)->with('candidate')->get();
+        
+        return view('recruter.applications', compact('job', 'applications'));
+    }
+
+    public function updateApplicationStatus(Request $request, $applicationId)
+    {
+        $application = application::whereHas('job', function($query) {
+            $query->where('employer_id', Auth::guard('employer')->id());
+        })->findOrFail($applicationId);
+
+        $request->validate([
+            'status' => 'required|in:pending,accepted,rejected'
+        ]);
+
+        $application->update(['status' => $request->status]);
+
+        return back()->with('success', 'Application status updated to ' . $request->status);
+    }
+
+    public function editProfile()
+    {
+        $employer = Auth::guard('employer')->user();
+        return view('recruter.profile', compact('employer'));
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $employer = Auth::guard('employer')->user();
+        $data = $request->all();
+
+        if ($request->hasFile('logo')) {
+            $path = $request->file('logo')->store('logos', 'public');
+            $data['logo_url'] = $path;
+        }
+
+        $employer->update($data);
+        return back()->with('success', 'Profile updated successfully');
     }
 }

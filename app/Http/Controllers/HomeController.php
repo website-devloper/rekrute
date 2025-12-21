@@ -39,9 +39,28 @@ class HomeController extends Controller
         return view('contact');
     }
 
-    public function Jobs()
+    public function Jobs(Request $request)
     {
-        $jobs = Job::all();
+        $query = Job::query();
+
+        if ($request->has('query') && $request->filled('query')) {
+            $search = $request->input('query');
+            $query->where(function($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                  ->orWhere('description', 'like', "%{$search}%")
+                  ->orWhereHas('employer', function($q) use ($search) {
+                      $q->where('name', 'like', "%{$search}%");
+                  });
+            });
+        }
+
+        if ($request->has('location') && $request->filled('location')) {
+            $location = $request->input('location');
+            $query->where('city', 'like', "%{$location}%");
+        }
+
+        $jobs = $query->paginate(12);
+
         foreach ($jobs as $job) {
             $createdAt = Carbon::parse($job->created_at);
             $timeAgo = $createdAt->diffForHumans();
@@ -52,7 +71,10 @@ class HomeController extends Controller
 
     public function Companies()
     {
-        return view('companies');
+        $companies = employer::withCount('jobs')->paginate(12);
+        // Assuming we have categories, or we can just use industry distinct values
+        $industries = employer::select('service')->distinct()->limit(8)->pluck('service'); // 'service' seems to be industry in the factory
+        return view('companies', compact('companies', 'industries'));
     }
     
     public function JobDetails(Request $request, $jobId)

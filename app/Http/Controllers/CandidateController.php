@@ -18,7 +18,20 @@ class CandidateController extends Controller
     public function updateProfile(Request $request)
     {
         $candidate = Auth::guard('candidate')->user();
-        $candidate->update($request->all());
+        
+        $data = $request->except(['resume']);
+
+        if ($request->hasFile('resume')) {
+            $request->validate([
+                'resume' => 'required|mimes:pdf,doc,docx|max:2048',
+            ]);
+            
+            // Store new resume
+            $path = $request->file('resume')->store('resumes', 'public');
+            $data['resume'] = $path;
+        }
+
+        $candidate->update($data);
         return back()->with('success', 'Profile Updated');
     }
 

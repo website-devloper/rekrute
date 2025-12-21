@@ -16,58 +16,31 @@
         <div class="container">
             <!-- Filter Bar -->
             <div class="filter-bar" style="margin-bottom: 3rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <button class="tag" style="border: none; cursor: pointer;">All Industries</button>
-                <button class="tag" style="border: none; cursor: pointer; background: white; border: 1px solid var(--gray-200);">Technology</button>
-                <button class="tag" style="border: none; cursor: pointer; background: white; border: 1px solid var(--gray-200);">Finance</button>
-                <button class="tag" style="border: none; cursor: pointer; background: white; border: 1px solid var(--gray-200);">Healthcare</button>
+                <a href="{{ route('companies') }}" class="tag" style="border: none; cursor: pointer; text-decoration: none; color: inherit;  background: {{ !request('industry') ? 'var(--gray-900)' : 'white' }}; color: {{ !request('industry') ? 'white' : 'var(--gray-900)' }}">All Industries</a>
+                @foreach($industries as $industry)
+                    <a href="{{ route('companies', ['industry' => $industry]) }}" class="tag" style="border: none; cursor: pointer; text-decoration: none; color: inherit; background: {{ request('industry') == $industry ? 'var(--gray-900)' : 'white' }}; color: {{ request('industry') == $industry ? 'white' : 'var(--gray-900)' }}; border: 1px solid var(--gray-200);">{{ $industry }}</a>
+                @endforeach
             </div>
 
             <div class="companies-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem;">
                 
-                <!-- Company Card 1 -->
+                @foreach($companies as $company)
+                <!-- Company Card -->
                 <div class="company-card" style="border: 1px solid var(--gray-200); border-radius: 1rem; padding: 2rem; text-align: center; transition: all 0.3s ease;">
-                    <img src="/image/logo1.png" alt="Company" style="width: 80px; height: 80px; object-fit: contain; margin-bottom: 1.5rem;">
-                    <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--gray-900); margin-bottom: 0.5rem;">TechCorp Inc.</h3>
+                    <img src="/image/{{ $company->logo_url ?? 'logo1.png' }}" alt="{{ $company->name }}" style="width: 80px; height: 80px; object-fit: contain; margin-bottom: 1.5rem;">
+                    <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--gray-900); margin-bottom: 0.5rem;">{{ $company->name }}</h3>
                     <div style="color: var(--gray-600); font-size: 0.9rem; margin-bottom: 1.5rem;">
-                        <span style="display: block; margin-bottom: 0.25rem;">Technology</span>
-                        <span>⭐ 4.8 (120 Reviews)</span>
+                        <span style="display: block; margin-bottom: 0.25rem;">{{ $company->service }}</span>
+                        <span>{{ $company->city }}, {{ $company->country }}</span>
                     </div>
-                    <a href="#" class="btn-secondary" style="display: inline-block; padding: 0.5rem 1.5rem; border-radius: 0.5rem; text-decoration: none;">View 12 Jobs</a>
+                    <a href="#" class="btn-secondary" style="display: inline-block; padding: 0.5rem 1.5rem; border-radius: 0.5rem; text-decoration: none; background: var(--gray-100); color: var(--gray-900); font-weight: 600;">View {{ $company->jobs_count }} Jobs</a>
                 </div>
+                @endforeach
 
-                <!-- Company Card 2 -->
-                <div class="company-card" style="border: 1px solid var(--gray-200); border-radius: 1rem; padding: 2rem; text-align: center; transition: all 0.3s ease;">
-                     <div style="width: 80px; height: 80px; background: #000; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.5rem; margin: 0 auto 1.5rem;">N</div>
-                    <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--gray-900); margin-bottom: 0.5rem;">Netflix</h3>
-                    <div style="color: var(--gray-600); font-size: 0.9rem; margin-bottom: 1.5rem;">
-                        <span style="display: block; margin-bottom: 0.25rem;">Entertainment</span>
-                        <span>⭐ 4.9 (500 Reviews)</span>
-                    </div>
-                    <a href="#" class="btn-secondary" style="display: inline-block; padding: 0.5rem 1.5rem; border-radius: 0.5rem; text-decoration: none;">View 8 Jobs</a>
-                </div>
+            </div>
 
-                <!-- Company Card 3 -->
-                <div class="company-card" style="border: 1px solid var(--gray-200); border-radius: 1rem; padding: 2rem; text-align: center; transition: all 0.3s ease;">
-                    <div style="width: 80px; height: 80px; background: #4285F4; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.5rem; margin: 0 auto 1.5rem;">G</div>
-                    <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--gray-900); margin-bottom: 0.5rem;">Google</h3>
-                    <div style="color: var(--gray-600); font-size: 0.9rem; margin-bottom: 1.5rem;">
-                        <span style="display: block; margin-bottom: 0.25rem;">Technology</span>
-                        <span>⭐ 4.7 (2k+ Reviews)</span>
-                    </div>
-                    <a href="#" class="btn-secondary" style="display: inline-block; padding: 0.5rem 1.5rem; border-radius: 0.5rem; text-decoration: none;">View 25 Jobs</a>
-                </div>
-
-                 <!-- Company Card 4 -->
-                 <div class="company-card" style="border: 1px solid var(--gray-200); border-radius: 1rem; padding: 2rem; text-align: center; transition: all 0.3s ease;">
-                    <div style="width: 80px; height: 80px; background: #FF9900; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.5rem; margin: 0 auto 1.5rem;">A</div>
-                    <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--gray-900); margin-bottom: 0.5rem;">Amazon</h3>
-                    <div style="color: var(--gray-600); font-size: 0.9rem; margin-bottom: 1.5rem;">
-                        <span style="display: block; margin-bottom: 0.25rem;">E-Commerce</span>
-                        <span>⭐ 4.5 (5k+ Reviews)</span>
-                    </div>
-                    <a href="#" class="btn-secondary" style="display: inline-block; padding: 0.5rem 1.5rem; border-radius: 0.5rem; text-decoration: none;">View 40 Jobs</a>
-                </div>
-
+             <div class="pagination-wrapper" style="margin-top: 3rem; display: flex; justify-content: center;">
+                {{ $companies->appends(request()->input())->links('pagination::bootstrap-4') }}
             </div>
         </div>
     </section>

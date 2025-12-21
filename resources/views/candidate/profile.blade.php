@@ -41,7 +41,7 @@
                 <div class="bg-white rounded-lg shadow-sm p-4">
                     <h4 class="font-weight-bold mb-4">My Information</h4>
 
-                    <form action="{{ route('candidate.update') }}" method="POST">
+                    <form action="{{ route('candidate.update') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row g-3">
                             <div class="col-md-6">
@@ -71,6 +71,16 @@
                             <div class="col-md-6">
                                 <label class="form-label font-weight-bold">City</label>
                                 <input type="text" name="city" class="form-control" value="{{ $candidate->city }}">
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label font-weight-bold">Resume (PDF, DOCX)</label>
+                                <div class="d-flex align-items-center gap-3">
+                                    <input type="file" name="resume" class="form-control">
+                                    @if($candidate->resume && $candidate->resume != 'resume.pdf')
+                                        <a href="{{ asset('storage/' . $candidate->resume) }}" target="_blank" class="btn btn-sm btn-outline-primary">View Current</a>
+                                    @endif
+                                </div>
                             </div>
 
                             <div class="col-12">
