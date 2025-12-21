@@ -18,6 +18,15 @@
     <div class="cont">
         <div class="form sign-in">
             <h2>Candidate Registration</h2>
+            @if($errors->any() && !request()->has('sign_up_recruter'))
+                <div style="color: #dc3545; background: #f8d7da; padding: 0.75rem; border-radius: 0.5rem; margin-bottom: 1rem; font-size: 0.9rem;">
+                    <ul style="margin: 0; padding-left: 1.25rem;">
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <form action="{{route('sign_up_store')}}" method="POST">
                 @csrf
                 <label>
@@ -57,6 +66,15 @@
             </div>
             <div class="form sign-up">
                 <h2>Recruter Registration</h2>
+                @if($errors->any() && request()->has('sign_up_recruter'))
+                    <div style="color: #dc3545; background: #f8d7da; padding: 0.75rem; border-radius: 0.5rem; margin-bottom: 1rem; font-size: 0.9rem;">
+                        <ul style="margin: 0; padding-left: 1.25rem;">
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <form action="{{route('sign_up_store')}}" method="POST">
                     @csrf
                     <label>

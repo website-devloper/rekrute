@@ -21,6 +21,11 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
+                if ($guard === 'candidate') {
+                    return redirect()->route('candidateProfile');
+                } elseif ($guard === 'employer') {
+                    return redirect()->route('dashboard.recruiter');
+                }
                 return redirect(RouteServiceProvider::HOME);
             }
         }

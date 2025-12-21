@@ -18,6 +18,15 @@
             <form action="{{route('sign_in_store')}}" method="POST">
               @csrf
                 <h2>Sign In</h2>
+                @if($errors->any())
+                    <div style="color: #dc3545; background: #f8d7da; padding: 0.75rem; border-radius: 0.5rem; margin-bottom: 1rem; font-size: 0.9rem;">
+                        <ul style="margin: 0; padding-left: 1.25rem;">
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <label>
                     <span>Email Address</span>
                     <input type="email" name="email">
@@ -28,7 +37,7 @@
                 </label>
                 <button class="submit" type="submit">Sign In</button>
 
-                <a href="/forgot_password" class="link_forget_pass">
+                <a href="{{ route('forgot_password') }}" class="link_forget_pass">
                     <p class="forgot-pass">Forgot Password ?</p>
                 </a>
         </div>
