@@ -1,78 +1,66 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\RecruterController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RecruiterController;
 use App\Http\Controllers\CandidateController;
-
-
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
 */
 
-// Public & Auth Routes - HomeController
+// Public Routes
 Route::controller(HomeController::class)->group(function () {
+    Route::get('/', 'Home')->name('home');
     Route::get('/about', 'About')->name('about');
     Route::get('/contact', 'Contact')->name('contact');
     Route::get('/jobs', 'Jobs')->name('jobs');
     Route::get('/companies', 'Companies')->name('companies');
-    Route::get('/', 'Home')->name('home'); // Added name 'home' for consistency
     Route::get('/job-details/{jobId}', 'JobDetails')->name("job-details");
-    Route::post('/applyJob', 'ApplyJob')->name('applyJob');
-
-    // Authentication
-    Route::get('/sign_in', 'SignInview')->name('sign_in');
-    Route::get('/sign_up', 'SignUpview')->name('sign_up');
-    Route::post('/sign_up_store', 'SignUpStore')->name('sign_up_store');
-    Route::post('/sign_in_store', 'SignInStore')->name('sign_in_store');
-
-    // Password Reset
-    Route::get('/forgot_password', 'ForgotPassword');
-    Route::get('/code_verification', 'CodeVerification');
-    Route::get('/new-pass', 'NewPass');
-    Route::get('/successfull-change-pass', 'SuccessfullChangePass');
+    
+    // Auth Views (Guests Only)
+    Route::middleware('guest')->group(function() {
+        Route::get('/sign_in', 'SignInview')->name('sign_in');
+        Route::get('/sign_up', 'SignUpview')->name('sign_up');
+        Route::get('/forgot-password', 'ForgotPassword')->name('forgot_password'); 
+    });
 });
 
-// Recruiter Routes - RecruterController
-Route::controller(RecruterController::class)->group(function () {
-    // Profile
-    Route::get('/employer', 'EditEmployerIndex')->name('profile');
-    Route::post('/updateEmployer', 'UpdateCompanyProfile')->name('updateEmployer');
+// Authentication Action Routes
+Route::controller(AuthController::class)->group(function () {
+    Route::post('/sign_in_store', 'login')->name('sign_in_store'); // Remapped to match existing form action often
+    Route::post('/sign_up_store', 'register')->name('sign_up_store'); // Remapped
+    Route::post('/logout', 'logout')->name('logout');
+    Route::get('/logout', 'logout'); // Handle GET logout for legacy links
+});
 
-    // Employer Dashboard Actions
-    Route::prefix('employer')->group(function () {
-        Route::get('/post-job', 'PostJob')->name('post-job');
-        Route::post('/post-job_store', 'PostJobRequest')->name('PostJobRequest');
-        Route::get('/manage-jobs', 'ManageJobs')->name('manage-jobs');
-        Route::get('/resume', 'resumeDisplayed')->name('resume');
+// Candidate Routes
+Route::middleware('auth:candidate')->prefix('candidate')->group(function () {
+    Route::controller(CandidateController::class)->group(function () {
+        Route::get('/dashboard', 'profile')->name('candidateProfile'); // Redirect to profile/dashboard
+        Route::post('/profile/update', 'updateProfile')->name('candidate.update');
+        Route::post('/apply-job', 'applyJob')->name('applyJob'); 
         
-        // Settings & Auth
-        Route::get('/logOut', 'logOut')->name('logOut');
-        Route::get('/change-password', 'ChangePasswordShow')->name('change-password');
-        Route::post('/change-password_store', 'ChangePasswordRequest')->name('ChangePasswordRequest');
+        // Dashboard Pages
+        Route::get('/applied-jobs', function() { return view('candidate.applied_jobs'); })->name('AppliedJob');
+        Route::get('/cv-manager', function() { return view('candidate.cv_manager'); })->name('cvManager');
     });
 });
 
-// Candidate Routes - CandidateController
-Route::controller(CandidateController::class)->group(function () {
-    Route::get('/candidate', 'candidateProfile')->name('candidateProfile');
-    Route::post('/updateCandidate', 'UpdatecandidateProfile')->name('UpdatecandidateProfile');
-    Route::get('/logOutC', 'logOutC')->name('logOutC');
-
-    Route::prefix('candidate')->group(function () {
-        Route::get('/AppliedJob', 'AppliedJob')->name('AppliedJob');
-        Route::get('/jobAlert', 'jobAlert')->name('jobAlert');
-        Route::get('/cvManager', 'cvManager')->name('cvManager');
-        Route::get('/change-passwordC', 'changePasswordC')->name('change-passwordC');
-        Route::post('/change-password_store', 'ChangePasswordCRequest')->name('ChangePasswordRequestC');
+// Recruiter Routes
+Route::middleware('auth:employer')->prefix('employer')->group(function () {
+    Route::controller(RecruiterController::class)->group(function () {
+        Route::get('/dashboard', 'dashboard')->name('dashboard.recruiter'); // Redirect to dashboard
+        
+        // Job Management
+        Route::get('/post-job', 'postJob')->name('post_job');
+        Route::post('/post-job', 'storeJob')->name('jobs.store');
+        
+        // Other legacy routes mapped
+        Route::get('/manage-jobs', 'dashboard')->name('manage-jobs'); // Mapping to dashboard for now
     });
 });
-
