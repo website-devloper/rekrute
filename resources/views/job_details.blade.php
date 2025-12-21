@@ -50,6 +50,7 @@
                     <div style="background: white; border-radius: 1.5rem; padding: 2rem; box-shadow: var(--shadow-lg); border: 1px solid var(--gray-200); position: sticky; top: 2rem;">
                         <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem;">Interested in this job?</h3>
                         
+                        @auth('candidate')
                         <form action="{{route('applyJob')}}" method="POST">
                             @csrf
                             <input type="text" value="{{$jobDetails->id}}" name="JobId" hidden>
@@ -57,6 +58,13 @@
                                 Apply Now
                             </button>
                         </form>
+                        @elseauth('employer')
+                            <div class="alert alert-info">Recruiters cannot apply to jobs.</div>
+                        @else
+                            <a href="{{ route('sign_in') }}" style="display: block; text-align: center; width: 100%; background: var(--gradient-cta); color: white; border: none; padding: 1rem; border-radius: 0.75rem; font-weight: 600; font-size: 1.1rem; cursor: pointer; text-decoration: none;">
+                                Login to Apply
+                            </a>
+                        @endauth
 
                         <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--gray-200);">
                             <p style="font-size: 0.9rem; color: var(--gray-500); margin-bottom: 0.5rem;">Posted by</p>

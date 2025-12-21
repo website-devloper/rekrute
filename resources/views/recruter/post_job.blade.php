@@ -1,145 +1,65 @@
 @extends('template')
+
 @section('content')
-
-<div>
-    @include('recruter.dashbord_recruter')
-    <link rel="stylesheet" href="/assets/bootstrap-5.0.2-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/bootstrap-5.0.2-dist/js/bootstrap.min.js">
-    <link rel="stylesheet" href="/assets/find_job.css">
-
-
-    <div class="container company-profile shadow p-3 mb-5 bg-body rounded">
-        <div class="container">
-            <h4 class="form-label">POST A JOB</h4>
-            <hr>
-            <form action="{{route('PostJobRequest')}}" method="POST">
-                @csrf
-
-                <div class="row g-3">
-
-                    <div class="col">
-                        <label for="jobTitle" class="form-label">Job Title</label>
-                        <br>
-                        <input type="text" id="jobTitle" name="jobTitle" class="Input-companyP form-control" placeholder="Enter job title">
+<div style="background-color: #f3f4f6; min-height: 100vh; padding: 2rem 0;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="bg-white rounded-lg shadow-sm p-4">
+                    <div class="mb-4 pb-3 border-bottom">
+                        <h2 class="font-weight-bold">Post a New Job</h2>
+                        <p class="text-muted">Find the perfect candidate for your company</p>
                     </div>
 
-                    <br><br>
+                    <form action="{{ route('jobs.store') }}" method="POST">
+                        @csrf
+                        
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label class="form-label font-weight-bold">Job Title</label>
+                                <input type="text" name="title" class="form-control" placeholder="e.g. Senior Software Engineer" required>
+                            </div>
 
-                    <div class="col">
+                            <div class="col-md-6">
+                                <label class="form-label font-weight-bold">Job Type</label>
+                                <select name="job_type" class="form-select" required>
+                                    <option value="Full Time">Full Time</option>
+                                    <option value="Part Time">Part Time</option>
+                                    <option value="Contract">Contract</option>
+                                    <option value="Freelance">Freelance</option>
+                                    <option value="Remote">Remote</option>
+                                </select>
+                            </div>
 
-                        <label for="city" class="form-label">City</label>
-                        <br>
-                        <input type="text" id="city" name="city" class="Input-companyP form-control"  placeholder="Enter city">
-                    </div>
+                            <div class="col-md-6">
+                                <label class="form-label font-weight-bold">Location (City)</label>
+                                <input type="text" name="city" class="form-control" placeholder="e.g. Casablanca">
+                            </div>
 
-                    <br><br>
+                            <div class="col-md-6">
+                                <label class="form-label font-weight-bold">Minimum Salary (DH)</label>
+                                <input type="number" name="min_salary" class="form-control" placeholder="e.g. 5000">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label font-weight-bold">Maximum Salary (DH)</label>
+                                <input type="number" name="max_salary" class="form-control" placeholder="e.g. 8000">
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label font-weight-bold">Job Description</label>
+                                <textarea name="description" class="form-control" rows="6" placeholder="Describe the role, responsibilities, and requirements..." required></textarea>
+                            </div>
+
+                            <div class="col-12 mt-4">
+                                <button type="submit" class="btn btn-primary px-5 py-2 rounded-pill font-weight-bold">Post Job Offer</button>
+                                <a href="{{ route('dashboard.recruiter') }}" class="btn btn-link text-muted ms-3">Cancel</a>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-
-
-
-                <div class="row g-3">
-
-                    <div class="col">
-                        <label for="country" class="form-label">Country</label>
-                        <br>
-                        <input type="text" id="country" name="country" class="Input-companyP form-control"  placeholder="Enter country">
-                    </div>
-
-                    <br><br>
-
-                    <div class="col">
-
-                        <label for="jobCat" class="form-label">Job Category</label>
-                        <br>
-                        <select name="jobCat" id="jobCat" class="Input-companyP form-select">
-                            <option value="">choose...</option>
-                            <option value="Software Engineer">Software Engineer</option>
-                        </select>
-                    </div>
-
-                    <br><br>
-                </div>
-
-
-
-
-                <div class="row g-3">
-
-                    <div class="col">
-                        <label for="jobType" class="form-label">Job Type</label>
-                        <br>
-                        <select name="jobType" id="jobType" class="Input-companyP form-select">
-                            <option value="Full Time">Full Time</option>
-                            <option value="Part Time">Part Time</option>
-                            <option value="Internship">Internship</option>
-                            <option value="freelance">freelance</option>
-                        </select>
-                    </div>
-
-                    <br><br>
-
-                    <div class="col">
-
-                        <label for="Experience" class="form-label">Experience</label>
-                        <br>
-                        <select name="Experience" id="Experience" class="Input-companyP form-select">
-                            <option value="Expert">Expert</option>
-                            <option value="2 Years">2 Years</option>
-                            <option value="3 Years">3 Years</option>
-                            <option value="4 Years">4 Years</option>
-                            <option value="5 Years">5 Years</option>
-                        </select>
-                    </div>
-
-                    <br><br>
-                </div>
-
-
-                <div class="row g-3">
-
-                    <div class="col">
-                        <label for="MinSalary" class="form-label">Minimum Salary(MAD)</label>
-                        <br>
-                        <input type="text" id="MinSalary" name="MinSalary" class="Input-companyP form-control"  placeholder="e.g 1000">
-                    </div>
-
-                    <br><br>
-
-                    <div class="col">
-                        <label for="MaxSalary" class="form-label">Maximum Salary(MAD)</label>
-                        <br>
-                        <input type="text" id="MaxSalary" name="MaxSalary" class="Input-companyP form-control"  placeholder="e.g 4000">
-                    </div>
-
-                    <br><br>
-                </div>
-
-               <br>
-                <label for="jobDes" class="form-label"> Job Description</label>
-                <br>
-                <textarea name="jobDes" id="jobDes" cols="120" rows="5" class="Input-companyP form-control"></textarea>
-               <br>
-                <label for="jobRes" class="form-label">Job Responsibilies</label>
-                <br>
-                <textarea name="jobRes" id="jobRes" cols="120" rows="5" class="Input-companyP form-control"></textarea>
-                <br>
-
-
-                <label for="Requirement" class="form-label">Requirements</label>
-                <br>
-                <textarea name="Requirement" id="Requirement" cols="120" rows="5"
-                    class="Input-companyP form-control"></textarea>
-
-
-                <input type="submit" class="button-C" value="POST YOUR JOB">
+            </div>
         </div>
-
-        </form>
     </div>
-
 </div>
-
-</div>
-</div>
-
 @endsection

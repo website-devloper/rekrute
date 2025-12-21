@@ -18,4 +18,9 @@ class employer extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+    public function jobs()
+    {
+        return $this->hasMany(Job::class);
+    }
 }

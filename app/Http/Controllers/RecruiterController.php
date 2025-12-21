@@ -12,8 +12,8 @@ class RecruiterController extends Controller
     public function dashboard()
     {
         $employerId = Auth::guard('employer')->id();
-        $jobs = Job::where('employer_id', $employerId)->get();
-        $applicationsCount = 0; // Logic to count total applications for these jobs
+        $jobs = Job::where('employer_id', $employerId)->withCount('applications')->get();
+        $applicationsCount = $jobs->sum('applications_count');
         
         return view('recruter.dashboard', compact('jobs', 'applicationsCount'));
     }

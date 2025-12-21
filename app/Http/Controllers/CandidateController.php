@@ -21,4 +21,36 @@ class CandidateController extends Controller
         $candidate->update($request->all());
         return back()->with('success', 'Profile Updated');
     }
+
+    public function applyJob(Request $request)
+    {
+        $request->validate([
+            'JobId' => 'required|exists:jobs,id',
+        ]);
+
+        $candidateId = Auth::guard('candidate')->id();
+        $jobId = $request->JobId;
+
+        // Check if already applied
+        $exists = application::where('candidate_id', $candidateId)->where('job_id', $jobId)->exists();
+        if ($exists) {
+            return back()->with('error', 'You have already applied to this job.');
+        }
+
+        application::create([
+            'candidate_id' => $candidateId,
+            'job_id' => $jobId,
+            'resume' => Auth::guard('candidate')->user()->resume ?? 'default_resume.pdf', // Fallback or handle upload separately
+            'status' => 'pending'
+        ]);
+
+        return back()->with('success', 'Application submitted successfully!');
+    }
+
+    public function appliedJobs()
+    {
+        $candidateId = Auth::guard('candidate')->id();
+        $applications = application::where('candidate_id', $candidateId)->with('job')->get(); // Assumes relationship exists
+        return view('candidate.applied_jobs', compact('applications'));
+    }
 }

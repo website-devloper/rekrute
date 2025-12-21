@@ -46,7 +46,7 @@ Route::middleware('auth:candidate')->prefix('candidate')->group(function () {
         Route::post('/apply-job', 'applyJob')->name('applyJob'); 
         
         // Dashboard Pages
-        Route::get('/applied-jobs', function() { return view('candidate.applied_jobs'); })->name('AppliedJob');
+        Route::get('/applied-jobs', 'appliedJobs')->name('AppliedJob');
         Route::get('/cv-manager', function() { return view('candidate.cv_manager'); })->name('cvManager');
     });
 });
