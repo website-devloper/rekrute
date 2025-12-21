@@ -6,6 +6,7 @@ use App\Http\Controllers\RecruterController;
 use App\Http\Controllers\CandidateController;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,78 +18,57 @@ use App\Http\Controllers\CandidateController;
 |
 */
 
-Route::get('/',[HomeController::class,'Home']);
-Route::get('/job-details/{jobId}',[HomeController::class,'JobDetails'])->name("job-details");
-Route::post('/applyJob',[HomeController::class,'ApplyJob'])->name('applyJob');
+// Public & Auth Routes - HomeController
+Route::controller(HomeController::class)->group(function () {
+    Route::get('/', 'Home')->name('home'); // Added name 'home' for consistency
+    Route::get('/job-details/{jobId}', 'JobDetails')->name("job-details");
+    Route::post('/applyJob', 'ApplyJob')->name('applyJob');
 
+    // Authentication
+    Route::get('/sign_in', 'SignInview')->name('sign_in');
+    Route::get('/sign_up', 'SignUpview')->name('sign_up');
+    Route::post('/sign_up_store', 'SignUpStore')->name('sign_up_store');
+    Route::post('/sign_in_store', 'SignInStore')->name('sign_in_store');
 
-// -------------------------------------SIGN IN AND SIGN UP -------------------------------------------------
+    // Password Reset
+    Route::get('/forgot_password', 'ForgotPassword');
+    Route::get('/code_verification', 'CodeVerification');
+    Route::get('/new-pass', 'NewPass');
+    Route::get('/successfull-change-pass', 'SuccessfullChangePass');
+});
 
-Route::get('/sign_in',[HomeController::class,'SignInview'])->name('sign_in');
+// Recruiter Routes - RecruterController
+Route::controller(RecruterController::class)->group(function () {
+    // Profile
+    Route::get('/employer', 'EditEmployerIndex')->name('profile');
+    Route::post('/updateEmployer', 'UpdateCompanyProfile')->name('updateEmployer');
 
-Route::get('/sign_up',[HomeController::class,'SignUpview'])->name('sign_up');
+    // Employer Dashboard Actions
+    Route::prefix('employer')->group(function () {
+        Route::get('/post-job', 'PostJob')->name('post-job');
+        Route::post('/post-job_store', 'PostJobRequest')->name('PostJobRequest');
+        Route::get('/manage-jobs', 'ManageJobs')->name('manage-jobs');
+        Route::get('/resume', 'resumeDisplayed')->name('resume');
+        
+        // Settings & Auth
+        Route::get('/logOut', 'logOut')->name('logOut');
+        Route::get('/change-password', 'ChangePasswordShow')->name('change-password');
+        Route::post('/change-password_store', 'ChangePasswordRequest')->name('ChangePasswordRequest');
+    });
+});
 
-Route::post('/sign_up_store',[HomeController::class,'SignUpStore'])->name('sign_up_store');
+// Candidate Routes - CandidateController
+Route::controller(CandidateController::class)->group(function () {
+    Route::get('/candidate', 'candidateProfile')->name('candidateProfile');
+    Route::post('/updateCandidate', 'UpdatecandidateProfile')->name('UpdatecandidateProfile');
+    Route::get('/logOutC', 'logOutC')->name('logOutC');
 
-Route::post('/sign_in_store',[HomeController::class,'SignInStore'])->name('sign_in_store');
-
-// --------------------------------------- END SIGN IN AND SIGN UP -----------------------------------------------------------------
-
-// ---------------------------------------FORGOT PASSWORD VERIFICATION CODE --------------------------------------------------------
-
-Route::get('/forgot_password',[HomeController::class,'ForgotPassword']);
-
-Route::get('/code_verification',[HomeController::class,'CodeVerification']);
-
-Route::get('/new-pass',[HomeController::class,'NewPass']);
-
-Route::get('/successfull-change-pass',[HomeController::class,'SuccessfullChangePass']);
-
-// --------------------------------------- END FORGOT PASSWORD VERIFICATION CODE ---------------------------------------------------
-
-// --------------------------------------- UPDATE COMPANY PROFILE  ---------------------------------------------------
-
-Route::get('/employer',[RecruterController::class,'EditEmployerIndex'])->name('profile');
-
-Route::post('/updateEmployer',[RecruterController::class,'UpdateCompanyProfile'])->name('updateEmployer');
-
-
-Route::get('/employer/post-job',[RecruterController::class,'PostJob'])->name('post-job');
-
-Route::post('/employer/post-job_store',[RecruterController::class,'PostJobRequest'])->name('PostJobRequest');
-// --------------------------------------- END UPDATE COMPANY PROFILE  ---------------------------------------------------
-
-// --------------------------------------- POST JOB ---------------------------------------------------
-
-Route::get('/employer/manage-jobs',[RecruterController::class,'ManageJobs'])->name('manage-jobs');
-
-Route::get('/employer/resume',[RecruterController::class,'resumeDisplayed'])->name('resume');
-//----------------------------------------- LOG OUT ---------------------------------------------------
-
-Route::get('/employer/logOut',[RecruterController::class,'logOut'])->name('logOut');
-
-
-Route::get('/employer/change-password',[RecruterController::class,'ChangePasswordShow'])->name('change-password');
-
-Route::post('/employer/change-password_store',[RecruterController::class,'ChangePasswordRequest'])->name('ChangePasswordRequest');
-
-// --------------------------------------- END POST JOB ---------------------------------------------------
-
-
-Route::get('/candidate',[CandidateController::class,'candidateProfile'])->name('candidateProfile');
-Route::post('/updateCandidate',[CandidateController::class,'UpdatecandidateProfile'])->name('UpdatecandidateProfile');
-
-
-Route::get('candidate/AppliedJob',[CandidateController::class,'AppliedJob'])->name('AppliedJob');
-
-Route::get('candidate/jobAlert',[CandidateController::class,'jobAlert'])->name('jobAlert');
-
-Route::get('candidate/cvManager',[CandidateController::class,'cvManager'])->name('cvManager');
-
-Route::get('candidate/change-passwordC',[CandidateController::class,'changePasswordC'])->name('change-passwordC');
-
-Route::post('candidate/change-password_store',[CandidateController::class,'ChangePasswordCRequest'])->name('ChangePasswordRequestC');
-
-
-Route::get('/logOutC',[CandidateController::class,'logOutC'])->name('logOutC');
+    Route::prefix('candidate')->group(function () {
+        Route::get('/AppliedJob', 'AppliedJob')->name('AppliedJob');
+        Route::get('/jobAlert', 'jobAlert')->name('jobAlert');
+        Route::get('/cvManager', 'cvManager')->name('cvManager');
+        Route::get('/change-passwordC', 'changePasswordC')->name('change-passwordC');
+        Route::post('/change-password_store', 'ChangePasswordCRequest')->name('ChangePasswordRequestC');
+    });
+});
 

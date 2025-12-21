@@ -144,7 +144,7 @@ class HomeController extends Controller
     
     public function NewPass()
     {
-        return view('signup_signin.new pass');
+        return view('signup_signin.new-pass');
     }
 
     public function SuccessfullChangePass(){

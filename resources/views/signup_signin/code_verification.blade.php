@@ -6,11 +6,7 @@
     <title>Code Verification</title>
 
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/style forgot.css">
-    <link rel="stylesheet" href="assets/style login.css">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/bootstrap-5.0.2-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/bootstrap-5.0.2-dist/js/bootstrap.min.js">
+    @vite(['resources/css/style-forgot.css', 'resources/css/style-login.css', 'resources/js/app.js'])
 </head>
 <body>
     <div class="container" >
