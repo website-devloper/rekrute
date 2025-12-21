@@ -44,8 +44,8 @@
                                 <h5 class="small font-weight-bold text-uppercase text-muted mb-3">Job Category</h5>
                                 @foreach($categories as $cat)
                                 <div class="form-check mb-2">
-                                    <input class="form-check-input" type="radio" name="category" value="{{ $cat }}" id="cat-{{ loop->index }}" {{ request('category') == $cat ? 'checked' : '' }} onchange="this.form.submit()">
-                                    <label class="form-check-label small" for="cat-{{ loop->index }}">{{ $cat }}</label>
+                                    <input class="form-check-input" type="radio" name="category" value="{{ $cat }}" id="cat-{{ $loop->index }}" {{ request('category') == $cat ? 'checked' : '' }} onchange="this.form.submit()">
+                                    <label class="form-check-label small" for="cat-{{ $loop->index }}">{{ $cat }}</label>
                                 </div>
                                 @endforeach
                             </div>
@@ -54,8 +54,8 @@
                                 <h5 class="small font-weight-bold text-uppercase text-muted mb-3">Job Type</h5>
                                 @foreach($jobTypes as $type)
                                 <div class="form-check mb-2">
-                                    <input class="form-check-input" type="radio" name="type" value="{{ $type }}" id="type-{{ loop->index }}" {{ request('type') == $type ? 'checked' : '' }} onchange="this.form.submit()">
-                                    <label class="form-check-label small" for="type-{{ loop->index }}">{{ $type }}</label>
+                                    <input class="form-check-input" type="radio" name="type" value="{{ $type }}" id="type-{{ $loop->index }}" {{ request('type') == $type ? 'checked' : '' }} onchange="this.form.submit()">
+                                    <label class="form-check-label small" for="type-{{ $loop->index }}">{{ $type }}</label>
                                 </div>
                                 @endforeach
                             </div>

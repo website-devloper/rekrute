@@ -51,6 +51,7 @@ class HomeController extends Controller
             $query->where(function($q) use ($search) {
                 $q->where('title', 'like', "%{$search}%")
                   ->orWhere('description', 'like', "%{$search}%")
+                  ->orWhere('job_category', 'like', "%{$search}%")
                   ->orWhereHas('employer', function($q) use ($search) {
                       $q->where('name', 'like', "%{$search}%");
                   });
@@ -59,15 +60,19 @@ class HomeController extends Controller
 
         if ($request->has('location') && $request->filled('location')) {
             $location = $request->input('location');
-            $query->where('city', 'like', "%{$location}%");
+            $query->where(function($q) use ($location) {
+                $q->where('city', 'like', "%{$location}%")
+                  ->orWhere('country', 'like', "%{$location}%")
+                  ->orWhere('job_type', 'like', "%{$location}%");
+            });
         }
 
         if ($request->has('category') && $request->filled('category')) {
-            $query->where('job_category', $request->category);
+            $query->where('job_category', $request->input('category'));
         }
 
         if ($request->has('type') && $request->filled('type')) {
-            $query->where('job_type', $request->type);
+            $query->where('job_type', $request->input('type'));
         }
 
         $jobs = $query->latest()->paginate(12);

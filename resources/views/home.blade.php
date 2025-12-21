@@ -42,10 +42,10 @@
                         </form>
                         <div class="popular-searches">
                             <span class="popular-label">Popular:</span>
-                            <a href="#" class="tag">UI/UX Designer</a>
-                            <a href="#" class="tag">Software Engineer</a>
-                            <a href="#" class="tag">Product Manager</a>
-                            <a href="#" class="tag">Data Analyst</a>
+                            <a href="{{ route('jobs', ['query' => 'UI/UX Designer']) }}" class="tag">UI/UX Designer</a>
+                            <a href="{{ route('jobs', ['query' => 'Software Engineer']) }}" class="tag">Software Engineer</a>
+                            <a href="{{ route('jobs', ['query' => 'Product Manager']) }}" class="tag">Product Manager</a>
+                            <a href="{{ route('jobs', ['query' => 'Data Analyst']) }}" class="tag">Data Analyst</a>
                         </div>
                     </div>
                 </div>
