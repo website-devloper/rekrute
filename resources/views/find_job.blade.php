@@ -47,120 +47,39 @@
             </div>
 
             <div class="jobs-grid">
-                <!-- Job Card 1 -->
+                @foreach($jobs as $job)
+                <!-- Dynamic Job Card -->
                 <div class="modern-job-card">
                     <div class="job-card-header">
                         <img src="/image/logo1.png" alt="Company Logo" class="company-logo">
-                        <span class="job-type-badge">Full Time</span>
+                        <span class="job-type-badge">{{ $job->job_type }}</span>
                     </div>
                     <div class="job-card-body">
-                        <h3 class="job-title">Senior UX Designer</h3>
-                        <p class="company-name">TechCorp Inc.</p>
+                        <h3 class="job-title">{{ $job->title }}</h3>
+                        <p class="company-name">{{ $job->company_name ?? 'Tech Company' }}</p>
                         <div class="job-meta">
                             <span class="meta-item">
                                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                New York, NY
+                                {{ $job->city }}, {{ $job->country }}
                             </span>
                             <span class="meta-item">
                                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                $120k - $150k
+                                {{ $job->minimum_salary }} - {{ $job->maximum_salary }} DH
+                            </span>
+                            <span class="meta-item">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                {{ $job->timeAgo }}
                             </span>
                         </div>
                     </div>
                     <div class="job-card-footer">
                         <div class="tags">
-                            <span class="tag-sm">Figma</span>
-                            <span class="tag-sm">Prototyping</span>
+                            <span class="tag-sm">{{ $job->category ?? 'General' }}</span>
                         </div>
-                        <a href="#" class="btn-apply">Apply Now</a>
+                        <a href="{{ route('job-details', $job->id) }}" class="btn-apply">Apply Now</a>
                     </div>
                 </div>
-
-                <!-- Job Card 2 -->
-                <div class="modern-job-card">
-                    <div class="job-card-header">
-                        <div class="company-logo" style="background: #f0f0f0; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #666;">G</div>
-                        <span class="job-type-badge">Remote</span>
-                    </div>
-                    <div class="job-card-body">
-                        <h3 class="job-title">Frontend Developer</h3>
-                        <p class="company-name">Google</p>
-                        <div class="job-meta">
-                            <span class="meta-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                Remote
-                            </span>
-                            <span class="meta-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                $140k - $180k
-                            </span>
-                        </div>
-                    </div>
-                    <div class="job-card-footer">
-                        <div class="tags">
-                            <span class="tag-sm">React</span>
-                            <span class="tag-sm">TypeScript</span>
-                        </div>
-                        <a href="#" class="btn-apply">Apply Now</a>
-                    </div>
-                </div>
-
-                <!-- Job Card 3 -->
-                <div class="modern-job-card">
-                    <div class="job-card-header">
-                        <div class="company-logo" style="background: #000; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #fff;">N</div>
-                        <span class="job-type-badge">Full Time</span>
-                    </div>
-                    <div class="job-card-body">
-                        <h3 class="job-title">Product Manager</h3>
-                        <p class="company-name">Netflix</p>
-                        <div class="job-meta">
-                            <span class="meta-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                Los Gatos, CA
-                            </span>
-                            <span class="meta-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                $200k+
-                            </span>
-                        </div>
-                    </div>
-                    <div class="job-card-footer">
-                        <div class="tags">
-                            <span class="tag-sm">Product</span>
-                            <span class="tag-sm">Strategy</span>
-                        </div>
-                        <a href="#" class="btn-apply">Apply Now</a>
-                    </div>
-                </div>
-                 <!-- Job Card 4 -->
-                 <div class="modern-job-card">
-                    <div class="job-card-header">
-                        <div class="company-logo" style="background: #E1306C; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #fff;">I</div>
-                        <span class="job-type-badge">Contract</span>
-                    </div>
-                    <div class="job-card-body">
-                        <h3 class="job-title">Social Media Manager</h3>
-                        <p class="company-name">Instagram</p>
-                        <div class="job-meta">
-                            <span class="meta-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                Remote
-                            </span>
-                            <span class="meta-item">
-                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                $80k - $100k
-                            </span>
-                        </div>
-                    </div>
-                    <div class="job-card-footer">
-                        <div class="tags">
-                            <span class="tag-sm">Marketing</span>
-                            <span class="tag-sm">Social</span>
-                        </div>
-                        <a href="#" class="btn-apply">Apply Now</a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

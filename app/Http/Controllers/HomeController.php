@@ -28,6 +28,32 @@ class HomeController extends Controller
     
         return view('home', compact('jobs'));
     }
+
+    public function About()
+    {
+        return view('about');
+    }
+
+    public function Contact()
+    {
+        return view('contact');
+    }
+
+    public function Jobs()
+    {
+        $jobs = Job::all();
+        foreach ($jobs as $job) {
+            $createdAt = Carbon::parse($job->created_at);
+            $timeAgo = $createdAt->diffForHumans();
+            $job->timeAgo = $timeAgo; 
+        }
+        return view('find_job', compact('jobs'));
+    }
+
+    public function Companies()
+    {
+        return view('companies');
+    }
     
     public function JobDetails(Request $request, $jobId)
     {
@@ -38,7 +64,7 @@ class HomeController extends Controller
         $jobDetails->timeAgo = $timeAgo; 
 
         $recruter=employer::findOrFail($jobDetails->employer_id)->name;
-        return view('parts.jobDetails',compact('jobDetails','recruter'));
+        return view('job_details',compact('jobDetails','recruter'));
     }
 
 

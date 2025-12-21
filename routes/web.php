@@ -20,6 +20,10 @@ use App\Http\Controllers\CandidateController;
 
 // Public & Auth Routes - HomeController
 Route::controller(HomeController::class)->group(function () {
+    Route::get('/about', 'About')->name('about');
+    Route::get('/contact', 'Contact')->name('contact');
+    Route::get('/jobs', 'Jobs')->name('jobs');
+    Route::get('/companies', 'Companies')->name('companies');
     Route::get('/', 'Home')->name('home'); // Added name 'home' for consistency
     Route::get('/job-details/{jobId}', 'JobDetails')->name("job-details");
     Route::post('/applyJob', 'ApplyJob')->name('applyJob');
