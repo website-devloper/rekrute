@@ -1,37 +1,59 @@
-<!-- Modern Professional Footer -->
-<footer class="modern-footer">
+<!-- Premium Modern Footer -->
+<footer class="premium-footer">
+    <!-- Decorative Elements -->
+    <div class="footer-glow footer-glow-1"></div>
+    <div class="footer-glow footer-glow-2"></div>
+    
     <div class="footer-container">
+        <!-- Top CTA Section -->
+        <div class="footer-cta" data-aos="fade-up">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Find Your Dream Job?</h2>
+                <p class="cta-text">Join thousands of professionals who have found their perfect career match.</p>
+            </div>
+            <div class="cta-buttons">
+                <a href="{{ route('jobs') }}" class="btn-cta-primary">
+                    <span>Browse Jobs</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="{{ route('sign_up') }}" class="btn-cta-secondary">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Create Account</span>
+                </a>
+            </div>
+        </div>
+
         <!-- Footer Main Content -->
         <div class="footer-main">
             <div class="footer-grid">
                 <!-- Company Info -->
-                <div class="footer-column">
+                <div class="footer-column footer-brand">
                     <div class="footer-logo">
-                        <img src="/image/logo1.png" alt="JobPortal Logo" class="logo-img">
+                        <div class="logo-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                            </svg>
+                        </div>
+                        <span class="logo-text">REKR<span>UTE</span></span>
                     </div>
                     <p class="footer-description">
-                        Your trusted partner in finding the perfect career opportunity. Connect with top employers and discover your dream job today.
+                        Your AI-powered recruitment partner. Connecting ambitious talent with world-class opportunities at leading companies globally.
                     </p>
                     <div class="social-links">
                         <a href="#" class="social-link" aria-label="Facebook">
-                            <svg fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                            </svg>
+                            <i class="fab fa-facebook-f"></i>
                         </a>
                         <a href="#" class="social-link" aria-label="Twitter">
-                            <svg fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                            </svg>
+                            <i class="fab fa-twitter"></i>
                         </a>
                         <a href="#" class="social-link" aria-label="LinkedIn">
-                            <svg fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                            </svg>
+                            <i class="fab fa-linkedin-in"></i>
                         </a>
                         <a href="#" class="social-link" aria-label="Instagram">
-                            <svg fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/>
-                            </svg>
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
                         </a>
                     </div>
                 </div>
@@ -40,12 +62,12 @@
                 <div class="footer-column">
                     <h3 class="footer-heading">For Job Seekers</h3>
                     <ul class="footer-links">
-                        <li><a href="/FindJobs">Browse Jobs</a></li>
-                        <li><a href="#">Browse Categories</a></li>
-                        <li><a href="#">Job Alerts</a></li>
-                        <li><a href="#">Career Advice</a></li>
-                        <li><a href="#">Resume Builder</a></li>
-                        <li><a href="#">Salary Tools</a></li>
+                        <li><a href="{{ route('jobs') }}"><i class="fas fa-chevron-right"></i> Browse Jobs</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Job Categories</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Job Alerts</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Career Advice</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Resume Builder</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Salary Guide</a></li>
                     </ul>
                 </div>
 
@@ -53,12 +75,12 @@
                 <div class="footer-column">
                     <h3 class="footer-heading">For Employers</h3>
                     <ul class="footer-links">
-                        <li><a href="/FIndCandidates">Browse Candidates</a></li>
-                        <li><a href="#">Post a Job</a></li>
-                        <li><a href="#">Pricing Plans</a></li>
-                        <li><a href="#">Employer Resources</a></li>
-                        <li><a href="#">Recruitment Solutions</a></li>
-                        <li><a href="#">Company Profiles</a></li>
+                        <li><a href="{{ route('companies') }}"><i class="fas fa-chevron-right"></i> Browse Candidates</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Post a Job</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Pricing Plans</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Employer Resources</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Recruitment Solutions</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Company Profiles</a></li>
                     </ul>
                 </div>
 
@@ -66,26 +88,58 @@
                 <div class="footer-column">
                     <h3 class="footer-heading">Company</h3>
                     <ul class="footer-links">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Press</a></li>
-                        <li><a href="#">Partners</a></li>
+                        <li><a href="{{ route('about') }}"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="{{ route('contact') }}"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Careers</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Blog</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Press</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Partners</a></li>
                     </ul>
                 </div>
 
-                <!-- Support -->
-                <div class="footer-column">
-                    <h3 class="footer-heading">Support</h3>
-                    <ul class="footer-links">
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">FAQs</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
-                        <li><a href="#">Accessibility</a></li>
+                <!-- Contact & Newsletter -->
+                <div class="footer-column footer-contact">
+                    <h3 class="footer-heading">Get in Touch</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <span class="contact-label">Email us</span>
+                                <a href="mailto:support@rekrute.com">support@rekrute.com</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <span class="contact-label">Call us</span>
+                                <a href="tel:+15551234567">+1 (555) 123-4567</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <span class="contact-label">Visit us</span>
+                                <span>123 Innovation Drive, Tech City</span>
+                            </div>
+                        </li>
                     </ul>
+                    
+                    <!-- Mini Newsletter -->
+                    <div class="mini-newsletter">
+                        <p class="newsletter-label">Subscribe to job alerts</p>
+                        <form class="newsletter-form-mini">
+                            <input type="email" placeholder="Your email" class="newsletter-input-mini">
+                            <button type="submit" class="newsletter-btn-mini" aria-label="Subscribe">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -94,7 +148,7 @@
         <div class="footer-bottom">
             <div class="footer-bottom-content">
                 <p class="copyright">
-                    © {{ date('Y') }} JobPortal. All rights reserved.
+                    © {{ date('Y') }} Rekrute. All rights reserved. Made with <span class="heart">❤</span> for job seekers.
                 </p>
                 <div class="footer-bottom-links">
                     <a href="#">Terms</a>
@@ -109,3 +163,497 @@
         </div>
     </div>
 </footer>
+
+<style>
+    .premium-footer {
+        background: linear-gradient(180deg, var(--gray-900) 0%, #0c1322 100%);
+        color: white;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .footer-glow {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(100px);
+        opacity: 0.15;
+        pointer-events: none;
+    }
+
+    .footer-glow-1 {
+        width: 500px;
+        height: 500px;
+        background: var(--primary);
+        top: -200px;
+        left: -150px;
+    }
+
+    .footer-glow-2 {
+        width: 400px;
+        height: 400px;
+        background: #ec4899;
+        bottom: -100px;
+        right: -100px;
+    }
+
+    .footer-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* CTA Section */
+    .footer-cta {
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        border-radius: 1.5rem;
+        padding: 3rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+        margin-top: -4rem;
+        box-shadow: 0 20px 50px -10px rgba(99, 102, 241, 0.4);
+        flex-wrap: wrap;
+    }
+
+    .cta-content {
+        flex: 1;
+        min-width: 300px;
+    }
+
+    .cta-title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    .cta-text {
+        opacity: 0.9;
+        font-size: 1rem;
+    }
+
+    .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .btn-cta-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.625rem;
+        background: white;
+        color: var(--primary);
+        padding: 0.875rem 1.75rem;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-cta-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-cta-primary i {
+        transition: transform 0.3s ease;
+    }
+
+    .btn-cta-primary:hover i {
+        transform: translateX(4px);
+    }
+
+    .btn-cta-secondary {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.625rem;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        color: white;
+        padding: 0.875rem 1.75rem;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        transition: all 0.3s ease;
+    }
+
+    .btn-cta-secondary:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateY(-2px);
+    }
+
+    /* Footer Main */
+    .footer-main {
+        padding: 5rem 0 3rem;
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 1.5fr repeat(3, 1fr) 1.3fr;
+        gap: 3rem;
+    }
+
+    .footer-brand {
+        padding-right: 2rem;
+    }
+
+    .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .footer-logo .logo-icon {
+        width: 44px;
+        height: 44px;
+        background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .footer-logo .logo-icon svg {
+        width: 22px;
+        height: 22px;
+        color: white;
+    }
+
+    .footer-logo .logo-text {
+        font-family: 'Outfit', sans-serif;
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: white;
+    }
+
+    .footer-logo .logo-text span {
+        color: var(--primary-light);
+    }
+
+    .footer-description {
+        color: var(--gray-400);
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+    }
+
+    .social-links {
+        display: flex;
+        gap: 0.625rem;
+    }
+
+    .social-link {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--gray-400);
+        transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+        background: var(--primary);
+        color: white;
+        transform: translateY(-3px);
+    }
+
+    .footer-heading {
+        font-family: 'Outfit', sans-serif;
+        font-size: 1.0625rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-bottom: 0.75rem;
+    }
+
+    .footer-heading::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 30px;
+        height: 2px;
+        background: var(--primary);
+        border-radius: 2px;
+    }
+
+    .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .footer-links li {
+        margin-bottom: 0.625rem;
+    }
+
+    .footer-links a {
+        color: var(--gray-400);
+        text-decoration: none;
+        font-size: 0.9375rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.25s ease;
+    }
+
+    .footer-links a i {
+        font-size: 0.625rem;
+        opacity: 0;
+        transform: translateX(-5px);
+        transition: all 0.25s ease;
+    }
+
+    .footer-links a:hover {
+        color: white;
+        transform: translateX(5px);
+    }
+
+    .footer-links a:hover i {
+        opacity: 1;
+        transform: translateX(0);
+        color: var(--primary-light);
+    }
+
+    /* Contact Info */
+    .contact-info {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .contact-info li {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .contact-icon {
+        width: 40px;
+        height: 40px;
+        background: rgba(99, 102, 241, 0.15);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-light);
+        flex-shrink: 0;
+    }
+
+    .contact-text {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contact-label {
+        font-size: 0.8125rem;
+        color: var(--gray-500);
+        margin-bottom: 0.125rem;
+    }
+
+    .contact-text a,
+    .contact-text span {
+        color: var(--gray-300);
+        text-decoration: none;
+        font-size: 0.9375rem;
+        transition: color 0.25s ease;
+    }
+
+    .contact-text a:hover {
+        color: var(--primary-light);
+    }
+
+    /* Mini Newsletter */
+    .mini-newsletter {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .newsletter-label {
+        font-size: 0.875rem;
+        color: var(--gray-400);
+        margin-bottom: 0.75rem;
+    }
+
+    .newsletter-form-mini {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .newsletter-input-mini {
+        flex: 1;
+        padding: 0.75rem 1rem;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        color: white;
+        font-size: 0.875rem;
+        outline: none;
+        transition: all 0.25s ease;
+    }
+
+    .newsletter-input-mini::placeholder {
+        color: var(--gray-500);
+    }
+
+    .newsletter-input-mini:focus {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: var(--primary);
+    }
+
+    .newsletter-btn-mini {
+        width: 44px;
+        height: 44px;
+        background: var(--primary);
+        border: none;
+        border-radius: 10px;
+        color: white;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .newsletter-btn-mini:hover {
+        background: var(--primary-dark);
+        transform: scale(1.05);
+    }
+
+    /* Footer Bottom */
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 1.5rem 0;
+    }
+
+    .footer-bottom-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .copyright {
+        color: var(--gray-500);
+        font-size: 0.875rem;
+        margin: 0;
+    }
+
+    .heart {
+        color: #f43f5e;
+        animation: heartbeat 1.5s ease infinite;
+    }
+
+    @keyframes heartbeat {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.2); }
+    }
+
+    .footer-bottom-links {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .footer-bottom-links a {
+        color: var(--gray-500);
+        text-decoration: none;
+        font-size: 0.875rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 6px;
+        transition: all 0.25s ease;
+    }
+
+    .footer-bottom-links a:hover {
+        color: white;
+        background: rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-bottom-links .divider {
+        color: var(--gray-600);
+        font-size: 0.625rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 1200px) {
+        .footer-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        .footer-brand {
+            grid-column: span 3;
+            padding-right: 0;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-contact {
+            grid-column: span 3;
+            margin-top: 1rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .footer-cta {
+            flex-direction: column;
+            text-align: center;
+            padding: 2rem;
+            margin-top: -3rem;
+        }
+
+        .cta-buttons {
+            justify-content: center;
+        }
+
+        .footer-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .footer-brand {
+            grid-column: span 2;
+        }
+
+        .footer-contact {
+            grid-column: span 2;
+        }
+
+        .footer-bottom-content {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .footer-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .footer-brand,
+        .footer-contact {
+            grid-column: span 1;
+        }
+
+        .cta-buttons {
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .btn-cta-primary,
+        .btn-cta-secondary {
+            width: 100%;
+            justify-content: center;
+        }
+    }
+</style>
