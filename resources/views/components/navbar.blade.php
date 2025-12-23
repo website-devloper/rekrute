@@ -238,7 +238,7 @@
     }
 
     .btn-login {
-        color: var(--gray-700);
+        color: rgba(255, 255, 255, 0.9);
         text-decoration: none;
         font-weight: 600;
         padding: 0.625rem 1.25rem;
@@ -248,6 +248,15 @@
     }
 
     .btn-login:hover {
+        color: white;
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .modern-navbar.scrolled .btn-login {
+        color: var(--gray-700);
+    }
+
+    .modern-navbar.scrolled .btn-login:hover {
         color: var(--primary);
         background: rgba(99, 102, 241, 0.08);
     }
@@ -429,15 +438,23 @@
     }
 
     .menu-toggle:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .modern-navbar.scrolled .menu-toggle:hover {
         background: rgba(99, 102, 241, 0.08);
     }
 
     .bar {
         width: 24px;
         height: 2.5px;
-        background: var(--dark);
+        background: white;
         border-radius: 10px;
         transition: all 0.3s ease;
+    }
+
+    .modern-navbar.scrolled .bar {
+        background: var(--gray-800);
     }
 
     .menu-toggle.active .bar:nth-child(1) {

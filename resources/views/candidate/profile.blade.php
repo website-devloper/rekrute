@@ -1,128 +1,255 @@
 @extends('template')
 
 @section('content')
-<div style="background-color: #f3f4f6; min-height: 100vh; padding: 2rem 0;">
-    <div class="container">
-        <div class="row">
-            <!-- Sidebar -->
-            <div class="col-lg-3 mb-4">
-                <div class="bg-white rounded-lg shadow-sm p-4 sticky-top" style="top: 2rem;">
-                    <div class="text-center mb-4">
-                        <div class="bg-success-100 text-success-600 rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" style="width: 64px; height: 64px; font-size: 1.5rem; font-weight: bold;">
-                            {{ substr(Auth::guard('candidate')->user()->first_name, 0, 1) }}
-                        </div>
-                        <h5 class="font-weight-bold mb-1">{{ Auth::guard('candidate')->user()->first_name }}</h5>
-                        <p class="text-muted small">Candidate Account</p>
-                    </div>
-
-                    <nav class="nav flex-column gap-2">
-                        <a href="{{ route('candidateProfile') }}" class="nav-link active d-flex align-items-center gap-2 text-dark font-weight-medium bg-light rounded p-2">
-                            <svg width="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
-                            My Profile
-                        </a>
-                        <a href="{{ route('AppliedJob') }}" class="nav-link d-flex align-items-center gap-2 text-muted p-2 hover-bg-light rounded">
-                            <svg width="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                            Applied Jobs
-                        </a>
-                        <form action="{{ route('logout') }}" method="POST" class="mt-3 pt-3 border-top">
-                            @csrf
-                            <button type="submit" class="btn btn-link nav-link text-danger d-flex align-items-center gap-2 p-0 w-100 text-decoration-none">
-                                <svg width="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
-                                Logout
-                            </button>
-                        </form>
-                    </nav>
-                </div>
+<div class="dashboard-wrapper">
+    <!-- Sidebar -->
+    <aside class="dashboard-sidebar">
+        <div class="sidebar-header">
+            <div class="user-avatar">
+                @if($candidate->img_url)
+                    <img src="{{ asset('storage/' . $candidate->img_url) }}" alt="{{ $candidate->first_name }}">
+                @else
+                    <span>{{ substr($candidate->first_name, 0, 1) }}{{ substr($candidate->last_name, 0, 1) }}</span>
+                @endif
             </div>
+            <h3>{{ $candidate->first_name }} {{ $candidate->last_name }}</h3>
+            <p>{{ $candidate->job_title ?? 'Job Seeker' }}</p>
+        </div>
 
-            <!-- Main Content -->
-            <div class="col-lg-9">
-                <!-- Profile Edit Form -->
-                <div class="bg-white rounded-lg shadow-sm p-4">
-                    <h4 class="font-weight-bold mb-4">My Information</h4>
+        <nav class="sidebar-nav">
+            <a href="{{ route('candidate.dashboard') }}" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+            <a href="{{ route('candidate.profile') }}" class="nav-link active"><i class="fas fa-user"></i> My Profile</a>
+            <a href="{{ route('candidate.applied_jobs') }}" class="nav-link"><i class="fas fa-briefcase"></i> Applied Jobs</a>
+            <a href="{{ route('jobs') }}" class="nav-link"><i class="fas fa-search"></i> Find Jobs</a>
+            <a href="{{ route('candidate.change_password') }}" class="nav-link"><i class="fas fa-lock"></i> Change Password</a>
+            <hr class="nav-divider">
+            <a href="{{ route('logout') }}" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </nav>
+    </aside>
 
-                    <form action="{{ route('candidate.update') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <label class="form-label font-weight-bold">First Name</label>
-                                <input type="text" name="first_name" class="form-control" value="{{ $candidate->first_name }}" required>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label font-weight-bold">Last Name</label>
-                                <input type="text" name="last_name" class="form-control" value="{{ $candidate->last_name }}">
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="form-label font-weight-bold">Email Address</label>
-                                <input type="email" name="email" class="form-control" value="{{ $candidate->email }}" readonly style="background-color: #f9fafb;">
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="form-label font-weight-bold">Phone</label>
-                                <input type="text" name="phone" class="form-control" value="{{ $candidate->phone }}">
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="form-label font-weight-bold">Job Title</label>
-                                <input type="text" name="job_title" class="form-control" placeholder="e.g. Software Engineer" value="{{ $candidate->job_title }}">
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="form-label font-weight-bold">City</label>
-                                <input type="text" name="city" class="form-control" value="{{ $candidate->city }}">
-                            </div>
-
-                            <div class="col-12">
-                                <label class="form-label font-weight-bold">Resume (PDF, DOCX)</label>
-                                <div class="d-flex align-items-center gap-3">
-                                    <input type="file" name="resume" class="form-control">
-                                    @if($candidate->resume && $candidate->resume != 'resume.pdf')
-                                        <a href="{{ asset('storage/' . $candidate->resume) }}" target="_blank" class="btn btn-sm btn-outline-primary">View Current</a>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <label class="form-label font-weight-bold">About Me</label>
-                                <textarea name="about" class="form-control" rows="4">{{ $candidate->about }}</textarea>
-                            </div>
-
-                            <div class="col-12 mt-4 text-end">
-                                <button type="submit" class="btn btn-success px-4 rounded-pill font-weight-bold">Save Changes</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Stats -->
-                <div class="row mt-4">
-                    <div class="col-md-6">
-                        <div class="bg-white rounded-lg shadow-sm p-4 d-flex align-items-center gap-3">
-                            <div class="bg-primary-100 text-primary p-3 rounded-circle">
-                                <svg width="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            </div>
-                            <div>
-                                <h3 class="font-weight-bold mb-0">12</h3>
-                                <p class="text-muted small mb-0">Applications Sent</p>
-                            </div>
-                        </div>
-                    </div>
-                     <div class="col-md-6">
-                        <div class="bg-white rounded-lg shadow-sm p-4 d-flex align-items-center gap-3">
-                            <div class="bg-warning-100 text-warning p-3 rounded-circle">
-                                <svg width="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
-                            </div>
-                            <div>
-                                <h3 class="font-weight-bold mb-0">5</h3>
-                                <p class="text-muted small mb-0">Profile Views</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+    <!-- Main Content -->
+    <main class="dashboard-main">
+        <div class="page-header">
+            <div>
+                <h1>My Profile</h1>
+                <p>Manage your personal information and resume</p>
             </div>
         </div>
-    </div>
+
+        @if(session('success'))
+            <div class="alert-success"><i class="fas fa-check-circle"></i> {{ session('success') }}</div>
+        @endif
+
+        @if($errors->any())
+            <div class="alert-danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <div class="form-card">
+            <form action="{{ route('candidate.profile.update') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                
+                <div class="form-section">
+                    <h3>Personal Information</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>First Name <span class="required">*</span></label>
+                            <input type="text" name="first_name" class="form-control" value="{{ $candidate->first_name }}" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Last Name <span class="required">*</span></label>
+                            <input type="text" name="last_name" class="form-control" value="{{ $candidate->last_name }}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" name="email" class="form-control" value="{{ $candidate->email }}" readonly style="background-color: #f9fafb;">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="text" name="phone" class="form-control" value="{{ $candidate->phone }}">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Job Title</label>
+                            <input type="text" name="job_title" class="form-control" value="{{ $candidate->job_title }}" placeholder="e.g. Software Engineer">
+                        </div>
+
+                        <div class="form-group">
+                            <label>City</label>
+                            <input type="text" name="city" class="form-control" value="{{ $candidate->city }}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Professional Summary</h3>
+                    <div class="form-group full-width">
+                        <label>About Me</label>
+                        <textarea name="about" class="form-control" rows="5" placeholder="Tell us about your experience and skills...">{{ $candidate->about }}</textarea>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Documents & Avatar</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Profile Picture</label>
+                            <div class="file-input-wrapper">
+                                <input type="file" name="img_url" class="form-control" accept="image/*">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Resume (PDF, DOCX)</label>
+                            <div class="file-input-wrapper">
+                                <input type="file" name="resume" class="form-control" accept=".pdf,.doc,.docx">
+                                @if($candidate->resume)
+                                    <div class="current-file">
+                                        <i class="fas fa-file-pdf"></i>
+                                        <a href="{{ asset('storage/' . $candidate->resume) }}" target="_blank">View Current Resume</a>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary-dash">Save Changes</button>
+                    <a href="{{ route('candidate.dashboard') }}" class="btn-secondary-dash">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </main>
 </div>
+
+<style>
+    .dashboard-wrapper { display: flex; min-height: calc(100vh - 80px); background: var(--gray-50); padding-top: 80px; }
+
+    .dashboard-sidebar {
+        width: 280px; background: white; border-right: 1px solid var(--gray-100);
+        padding: 2rem; position: sticky; top: 80px; height: calc(100vh - 80px); overflow-y: auto;
+    }
+
+    .sidebar-header { text-align: center; padding-bottom: 1.5rem; border-bottom: 1px solid var(--gray-100); margin-bottom: 1.5rem; }
+
+    .user-avatar {
+        width: 80px; height: 80px; border-radius: 50%;
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        display: flex; align-items: center; justify-content: center;
+        margin: 0 auto 1rem; font-size: 1.5rem; font-weight: 700; color: white; overflow: hidden;
+    }
+
+    .user-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+    .sidebar-header h3 { font-size: 1.125rem; font-weight: 700; color: var(--gray-900); margin-bottom: 0.25rem; }
+    .sidebar-header p { font-size: 0.875rem; color: var(--gray-500); }
+
+    .sidebar-nav { display: flex; flex-direction: column; gap: 0.375rem; }
+
+    .nav-link {
+        display: flex; align-items: center; gap: 0.75rem;
+        padding: 0.75rem 1rem; color: var(--gray-600);
+        text-decoration: none; border-radius: 0.625rem; font-weight: 500; transition: all 0.2s;
+    }
+
+    .nav-link:hover { background: var(--gray-50); color: var(--gray-900); }
+    .nav-link.active { background: var(--primary); color: white; }
+    .nav-link.text-danger { color: var(--danger); }
+    .nav-divider { margin: 1rem 0; border-color: var(--gray-100); }
+
+    .dashboard-main { flex: 1; padding: 2rem; max-width: 1000px; margin: 0 auto; }
+
+    .page-header { margin-bottom: 2rem; }
+    .page-header h1 { font-size: 1.75rem; font-weight: 700; color: var(--gray-900); margin-bottom: 0.25rem; }
+    .page-header p { color: var(--gray-500); }
+
+    .alert-success {
+        background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.2);
+        color: var(--success); padding: 1rem; border-radius: 0.75rem; margin-bottom: 1.5rem;
+    }
+
+    .alert-danger {
+        background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.2);
+        color: var(--danger); padding: 1rem; border-radius: 0.75rem; margin-bottom: 1.5rem;
+    }
+    .alert-danger ul { margin: 0; padding-left: 1.5rem; }
+
+    .form-card {
+        background: white; border-radius: 1rem; border: 1px solid var(--gray-100);
+        padding: 2rem;
+    }
+
+    .form-section { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--gray-50); }
+    .form-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    
+    .form-section h3 {
+        font-size: 1.125rem; font-weight: 600; color: var(--gray-900);
+        margin-bottom: 1.5rem;
+    }
+
+    .form-grid {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+    }
+
+    .form-group.full-width { grid-column: 1 / -1; }
+
+    .form-group label {
+        display: block; font-size: 0.875rem; font-weight: 500;
+        color: var(--gray-700); margin-bottom: 0.5rem;
+    }
+
+    .required { color: var(--danger); }
+
+    .form-control {
+        width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--gray-200);
+        border-radius: 0.5rem; font-family: inherit; font-size: 0.9375rem;
+        transition: all 0.2s;
+    }
+
+    .form-control:focus {
+        outline: none; border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+    }
+
+    .current-file {
+        margin-top: 0.5rem; font-size: 0.875rem;
+        display: flex; align-items: center; gap: 0.5rem; color: var(--primary);
+    }
+    .current-file a { color: var(--primary); text-decoration: none; font-weight: 500; }
+
+    .form-actions {
+        display: flex; gap: 1rem; margin-top: 2rem; padding-top: 2rem;
+        border-top: 1px solid var(--gray-100);
+    }
+
+    .btn-primary-dash {
+        padding: 0.75rem 2rem; background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        color: white; border: none; border-radius: 0.625rem; font-weight: 600;
+        cursor: pointer; transition: all 0.2s;
+    }
+
+    .btn-primary-dash:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3); }
+
+    .btn-secondary-dash {
+        padding: 0.75rem 2rem; background: var(--gray-100);
+        color: var(--gray-700); border: none; border-radius: 0.625rem;
+        font-weight: 600; cursor: pointer; text-decoration: none;
+        transition: all 0.2s; display: inline-flex; align-items: center; justify-content: center;
+    }
+
+    .btn-secondary-dash:hover { background: var(--gray-200); }
+
+    @media (max-width: 768px) {
+        .dashboard-sidebar { display: none; }
+        .form-grid { grid-template-columns: 1fr; }
+    }
+</style>
 @endsection
