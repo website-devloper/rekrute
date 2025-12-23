@@ -5,24 +5,24 @@
     <!-- Sidebar -->
     <aside class="dashboard-sidebar">
         <div class="sidebar-header">
-            <div class="company-logo">
-                @if($employer->logo_url)
-                    <img src="{{ asset('image/' . $employer->logo_url) }}" alt="{{ $employer->name }}">
+            <div class="user-avatar">
+                @if(auth('candidate')->user()->img_url)
+                    <img src="{{ asset('storage/' . auth('candidate')->user()->img_url) }}" alt="">
                 @else
-                    <i class="fas fa-building"></i>
+                    <span>{{ substr(auth('candidate')->user()->first_name, 0, 1) }}</span>
                 @endif
             </div>
-            <h3>{{ $employer->name }}</h3>
+            <h3>{{ auth('candidate')->user()->first_name }} {{ auth('candidate')->user()->last_name }}</h3>
+            <p>{{ auth('candidate')->user()->job_title ?? 'Job Seeker' }}</p>
         </div>
 
         <nav class="sidebar-nav">
-            <a href="{{ route('recruiter.dashboard') }}" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
-            <a href="{{ route('recruiter.jobs') }}" class="nav-link"><i class="fas fa-briefcase"></i> Manage Jobs</a>
-            <a href="{{ route('recruiter.post_job') }}" class="nav-link"><i class="fas fa-plus-circle"></i> Post New Job</a>
-            <a href="{{ route('recruiter.applications') }}" class="nav-link"><i class="fas fa-users"></i> Applications</a>
-            <a href="{{ route('recruiter.candidates') }}" class="nav-link"><i class="fas fa-file-alt"></i> Browse Resumes</a>
+            <a href="{{ route('candidate.dashboard') }}" class="nav-link"><i class="fas fa-th-large"></i> Dashboard</a>
+            <a href="{{ route('candidate.profile') }}" class="nav-link"><i class="fas fa-user"></i> My Profile</a>
+            <a href="{{ route('candidate.applied_jobs') }}" class="nav-link"><i class="fas fa-briefcase"></i> Applied Jobs</a>
+            <a href="{{ route('jobs') }}" class="nav-link"><i class="fas fa-search"></i> Find Jobs</a>
+            <a href="{{ route('candidate.change_password') }}" class="nav-link active"><i class="fas fa-lock"></i> Change Password</a>
             <hr class="nav-divider">
-            <a href="{{ route('recruiter.profile') }}" class="nav-link"><i class="fas fa-building"></i> Company Profile</a>
             <a href="{{ route('logout') }}" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </nav>
     </aside>
@@ -32,7 +32,7 @@
         <div class="page-header">
             <div>
                 <h1>Change Password</h1>
-                <p>Update your account security credentials</p>
+                <p>Ensure your account remains secure</p>
             </div>
         </div>
 
@@ -54,7 +54,7 @@
         @endif
 
         <div class="form-card">
-            <form action="{{ route('recruiter.change_password.update') }}" method="POST">
+            <form action="{{ route('candidate.change_password.update') }}" method="POST">
                 @csrf
                 
                 <div class="form-group">
@@ -75,7 +75,7 @@
 
                 <div class="form-actions">
                     <button type="submit" class="btn-primary-dash">Update Password</button>
-                    <a href="{{ route('recruiter.dashboard') }}" class="btn-secondary-dash">Cancel</a>
+                    <a href="{{ route('candidate.dashboard') }}" class="btn-secondary-dash">Cancel</a>
                 </div>
             </form>
         </div>
@@ -92,14 +92,17 @@
 
     .sidebar-header { text-align: center; padding-bottom: 1.5rem; border-bottom: 1px solid var(--gray-100); margin-bottom: 1.5rem; }
 
-    .company-logo {
-        width: 80px; height: 80px; border-radius: 1rem;
-        background: var(--gray-100); display: flex; align-items: center; justify-content: center;
-        margin: 0 auto 1rem; font-size: 2rem; color: var(--gray-400); overflow: hidden;
+    .user-avatar {
+        width: 80px; height: 80px; border-radius: 50%;
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        display: flex; align-items: center; justify-content: center;
+        margin: 0 auto 1rem; font-size: 1.5rem; font-weight: 700; color: white; overflow: hidden;
     }
 
-    .company-logo img { width: 100%; height: 100%; object-fit: contain; padding: 0.5rem; }
-    .sidebar-header h3 { font-size: 1rem; font-weight: 700; color: var(--gray-900); }
+    .user-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+    .sidebar-header h3 { font-size: 1.125rem; font-weight: 700; color: var(--gray-900); margin-bottom: 0.25rem; }
+    .sidebar-header p { font-size: 0.875rem; color: var(--gray-500); }
 
     .sidebar-nav { display: flex; flex-direction: column; gap: 0.375rem; }
 
