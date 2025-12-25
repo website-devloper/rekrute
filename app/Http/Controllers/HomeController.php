@@ -27,9 +27,9 @@ class HomeController extends Controller
         }
 
         $categories = Job::select('job_category')->distinct()->limit(8)->get();
-        // Fallback or specific icons could be mapped, but let's just use the names for now
+        $featuredCompanies = employer::withCount('jobs')->orderBy('jobs_count', 'desc')->limit(8)->get();
     
-        return view('home', compact('jobs', 'categories'));
+        return view('home', compact('jobs', 'categories', 'featuredCompanies'));
     }
 
     public function About()

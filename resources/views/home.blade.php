@@ -1,535 +1,230 @@
 @extends('template')
+
 @section('content')
-
-    <!-- Hero Section with Enhanced Premium Design -->
-    <section class="job-portal-hero">
-        <div class="hero-bg-elements">
-            <div class="glow-sphere glow-1"></div>
-            <div class="glow-sphere glow-2"></div>
-        </div>
-        <div class="container hero-container">
-            <div class="hero-content-wrapper">
-                <div class="hero-text-content" data-aos="fade-up">
-                    <span class="hero-badge"><i class="fas fa-rocket me-2"></i> #1 AI-Powered Job Platform</span>
-                    <h1 class="hero-title">
-                        Discover Your <span class="gradient-text">Future Career</span><br>
-                        with Industry Leaders
-                    </h1>
-                    <p class="hero-subtitle">
-                        Connecting ambitious talent with world-class opportunities. Build your legacy with 10,000+ top employers globally.
-                    </p>
+<div class="home-wrapper">
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text" data-aos="fade-up">
+                    <h1>Find your <span class="text-primary">dream job</span> <br> with confidence.</h1>
+                    <p>Connect with top employers and discover opportunities that match your skills and aspirations.</p>
                     
-                    <!-- Advanced Search Bar -->
-                    <div class="advanced-search-box" data-aos="zoom-in" data-aos-delay="200">
-                        <form action="{{ route('jobs') }}" method="GET" class="search-input-group">
-                            <div class="input-wrapper">
-                                <i class="fas fa-search input-icon" style="font-size: 1.1rem; opacity: 0.7;"></i>
-                                <input type="text" name="query" placeholder="Job title, skill, or company" class="search-input">
-                            </div>
-                            <div class="input-divider"></div>
-                            <div class="input-wrapper">
-                                <i class="fas fa-map-marker-alt input-icon" style="font-size: 1.1rem; opacity: 0.7;"></i>
-                                <input type="text" name="location" placeholder="Location or remote" class="search-input">
-                            </div>
-                            <button type="submit" class="search-btn-primary">
-                                <span>Find Jobs</span>
-                                <i class="fas fa-arrow-right ms-2" style="font-size: 0.9rem;"></i>
-                            </button>
-                        </form>
-                        <div class="popular-searches">
-                            <span class="popular-label">Trending:</span>
-                            <a href="{{ route('jobs', ['query' => 'UI/UX Designer']) }}" class="tag">UI/UX Designer</a>
-                            <a href="{{ route('jobs', ['query' => 'Software Engineer']) }}" class="tag">Software Engineer</a>
-                            <a href="{{ route('jobs', ['query' => 'Product Manager']) }}" class="tag">Product Manager</a>
-                            <a href="{{ route('jobs', ['query' => 'Data Analyst']) }}" class="tag">Data Analyst</a>
+                    <form action="{{ route('jobs') }}" method="GET" class="hero-search-form">
+                        <div class="input-group">
+                            <i class="fas fa-search"></i>
+                            <input type="text" name="query" placeholder="Job title, keywords, or company">
+                        </div>
+                        <div class="input-divider"></div>
+                        <div class="input-group location-group">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <input type="text" name="location" placeholder="City or zip code">
+                        </div>
+                        <button type="submit" class="btn-search">Search Jobs</button>
+                    </form>
+                    
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <strong>10k+</strong> <span>Active Jobs</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>500+</strong> <span>Companies</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>1M+</strong> <span>Candidates</span>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Hero Stats -->
-                <div class="hero-stats-grid" data-aos="fade-up" data-aos-delay="400">
-                    <div class="stat-card">
-                        <div class="stat-icon blue">
-                            <i class="fas fa-briefcase"></i>
-                        </div>
-                        <h3 class="stat-number">12.5k+</h3>
-                        <p class="stat-label">Live Jobs</p>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon purple">
-                            <i class="fas fa-building"></i>
-                        </div>
-                        <h3 class="stat-number">8.2k+</h3>
-                        <p class="stat-label">Companies</p>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon green">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <h3 class="stat-number">50k+</h3>
-                        <p class="stat-label">Candidates</p>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-icon orange">
-                            <i class="fas fa-user-check"></i>
-                        </div>
-                        <h3 class="stat-number">2.4k+</h3>
-                        <p class="stat-label">New Hires</p>
+                <div class="hero-image" data-aos="fade-left">
+                    <div class="illustration-placeholder">
+                        <i class="fas fa-rocket"></i>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Trusted Companies Section -->
-    <section class="trusted-companies">
-        <div class="container" data-aos="fade-up">
-            <p class="section-note">Empowering candidates at the world's most innovative teams</p>
-            <div class="companies-marquee">
-                <div class="company-logo-item"><i class="fab fa-google me-2"></i>Google</div>
-                <div class="company-logo-item"><i class="fab fa-microsoft me-2"></i>Microsoft</div>
-                <div class="company-logo-item"><i class="fab fa-amazon me-2"></i>Amazon</div>
-                <div class="company-logo-item"><i class="fab fa-apple me-2"></i>Apple</div>
-                <div class="company-logo-item"><i class="fab fa-meta me-2"></i>Meta</div>
-                <div class="company-logo-item"><span style="font-weight: 800;">Adobe</span></div>
-                <div class="company-logo-item"><span style="font-weight: 800;">Airbnb</span></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Job Categories Section -->
-    <section class="job-categories-section reveal">
+    <!-- Trusted Companies -->
+    <section class="logos-section">
         <div class="container">
-            <div class="section-header-center">
-                <h2 class="section-title">Explore by Category</h2>
-                <p class="section-description">Find the perfect job opportunity in your field of expertise</p>
-            </div>
-            
-            <div class="categories-grid">
-                <a href="#" class="category-card">
-                    <div class="category-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                        </svg>
-                    </div>
-                    <h3 class="category-title">Technology & IT</h3>
-                    <p class="category-count">2,340 jobs available</p>
-                </a>
-                
-                <a href="#" class="category-card">
-                    <div class="category-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
-                        </svg>
-                    </div>
-                    <h3 class="category-title">Design & Creative</h3>
-                    <p class="category-count">1,850 jobs available</p>
-                </a>
-                
-                <a href="#" class="category-card">
-                    <div class="category-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="category-title">Marketing & Sales</h3>
-                    <p class="category-count">1,560 jobs available</p>
-                </a>
-                
-                <a href="#" class="category-card">
-                    <div class="category-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="category-title">Finance & Banking</h3>
-                    <p class="category-count">980 jobs available</p>
-                </a>
-                
-                <a href="#" class="category-card">
-                    <div class="category-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="category-title">Healthcare</h3>
-                    <p class="category-count">1,240 jobs available</p>
-                </a>
-                
-                <a href="#" class="category-card">
-                    <div class="category-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
-                        </svg>
-                    </div>
-                    <h3 class="category-title">Education</h3>
-                    <p class="category-count">890 jobs available</p>
-                </a>
-                
-                <a href="#" class="category-card">
-                    <div class="category-icon" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                        </svg>
-                    </div>
-                    <h3 class="category-title">Real Estate</h3>
-                    <p class="category-count">670 jobs available</p>
-                </a>
-                
-                <a href="#" class="category-card">
-                    <div class="category-icon" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
-                        </svg>
-                    </div>
-                    <h3 class="category-title">Engineering</h3>
-                    <p class="category-count">1,420 jobs available</p>
-                </a>
+            <p class="section-label">Trusted by leading companies</p>
+            <div class="company-logos">
+                <div class="logo-item"><i class="fab fa-google"></i> Google</div>
+                <div class="logo-item"><i class="fab fa-microsoft"></i> Microsoft</div>
+                <div class="logo-item"><i class="fab fa-amazon"></i> Amazon</div>
+                <div class="logo-item"><i class="fab fa-spotify"></i> Spotify</div>
+                <div class="logo-item"><i class="fab fa-slack"></i> Slack</div>
             </div>
         </div>
     </section>
 
-    <!-- How It Works Section -->
-    <section class="how-it-works reveal">
+    <!-- Why Choose Us -->
+    <section class="why-section bg-light">
         <div class="container">
-            <div class="section-header-center">
-                <h2 class="section-title">How It Works</h2>
-                <p class="section-description">Get hired in 4 quick and easy steps</p>
+            <div class="section-header text-center">
+                <h2>Why search with Rekrute?</h2>
+                <p>We make job hunting easy and efficient.</p>
             </div>
-            
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-number">01</div>
-                    <div class="step-icon-wrapper">
-                        <svg class="step-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="step-title">Create Account</h3>
-                    <p class="step-description">Sign up for free and create your professional profile in minutes</p>
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="icon-box bg-blue-light"><i class="fas fa-check-circle"></i></div>
+                    <h3>Verified Jobs</h3>
+                    <p>Every job posting is verified to ensure legitimacy and quality.</p>
                 </div>
-                
-                <div class="step-card">
-                    <div class="step-number">02</div>
-                    <div class="step-icon-wrapper">
-                        <svg class="step-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="step-title">Upload CV/Resume</h3>
-                    <p class="step-description">Upload your resume and let employers find you</p>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon-box bg-purple-light"><i class="fas fa-bolt"></i></div>
+                    <h3>Fast Application</h3>
+                    <p>Apply to multiple jobs with one click using your saved profile.</p>
                 </div>
-                
-                <div class="step-card">
-                    <div class="step-number">03</div>
-                    <div class="step-icon-wrapper">
-                        <svg class="step-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="step-title">Find Suitable Job</h3>
-                    <p class="step-description">Search and explore thousands of jobs that match your skills</p>
-                </div>
-                
-                <div class="step-card">
-                    <div class="step-number">04</div>
-                    <div class="step-icon-wrapper">
-                        <svg class="step-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="step-title">Apply & Get Hired</h3>
-                    <p class="step-description">Apply with one click and get hired by your dream company</p>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-box bg-green-light"><i class="fas fa-comments"></i></div>
+                    <h3>Direct Communication</h3>
+                    <p>Chat directly with recruiters and get feedback on your applications.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Featured Jobs Section -->
-    <section class="featured-jobs-section reveal">
+    <!-- Featured Jobs -->
+    <section class="jobs-section">
         <div class="container">
-            <div class="section-header-flex">
+            <div class="section-header">
                 <div>
-                    <h2 class="section-title">Featured Jobs</h2>
-                    <p class="section-description">Hand-picked opportunities from top companies</p>
+                    <h2>Featured Jobs</h2>
+                    <p>Latest opportunities from top employers</p>
                 </div>
-                <a href="#" class="view-all-link">
-                    View All Jobs
-                    <svg class="link-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                    </svg>
+                <a href="{{ route('jobs') }}" class="btn-link">View All Jobs <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="jobs-grid">
+                @foreach($jobs as $job)
+                <div class="job-card-clean" data-aos="fade-up">
+                    <div class="card-top">
+                        <div class="employer-logo">
+                            @if($job->employer && $job->employer->logo_url)
+                                <img src="{{ asset('image/' . $job->employer->logo_url) }}" alt="{{ $job->employer->name }}">
+                            @else
+                                <span class="logo-char">{{ substr($job->employer->name ?? 'C', 0, 1) }}</span>
+                            @endif
+                        </div>
+                        <div class="job-meta-top">
+                            <span class="badge {{ $job->job_type == 'Full Time' ? 'badge-primary' : 'badge-light' }}">{{ $job->job_type }}</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3><a href="{{ route('job-details', $job->id) }}">{{ $job->title }}</a></h3>
+                        <p class="company-name">{{ $job->employer->name }}</p>
+                        <div class="job-details">
+                            <span><i class="fas fa-map-marker-alt"></i> {{ $job->city }}</span>
+                            <span><i class="fas fa-money-bill-wave"></i> {{ $job->minimum_salary > 0 ? '$'.number_format($job->minimum_salary/1000).'k - $'.number_format($job->maximum_salary/1000).'k' : 'Competitive' }}</span>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="time-ago">{{ $job->timeAgo }}</span>
+                        <a href="{{ route('job-details', $job->id) }}" class="btn-apply-sm">Apply</a>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Categories -->
+    <section class="categories-section bg-light">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2>Popular Categories</h2>
+                <p>Explore jobs by industry</p>
+            </div>
+            <div class="categories-grid">
+                @foreach($categories as $cat)
+                <a href="{{ route('jobs', ['category' => $cat->job_category]) }}" class="category-pill" data-aos="zoom-in">
+                    <i class="fas fa-tag"></i> {{ $cat->job_category }}
                 </a>
+                @endforeach
             </div>
         </div>
     </section>
 
-    <!-- Jobs Listing -->
-    <div class="container" style="padding-bottom: 5rem;">
-        <div class="jobs-grid">
-            @foreach($jobs->take(4) as $job)
-            <!-- Dynamic Job Card -->
-            <div class="modern-job-card">
-                <div class="job-card-header">
-                    <img src="/image/logo1.png" alt="Company Logo" class="company-logo">
-                    <span class="job-type-badge">{{ $job->job_type }}</span>
-                </div>
-                <div class="job-card-body">
-                    <h3 class="job-title">{{ $job->title }}</h3>
-                    <p class="company-name">{{ $job->company_name ?? 'Tech Company' }}</p>
-                    <div class="job-meta">
-                        <span class="meta-item">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                            {{ $job->city }}, {{ $job->country }}
-                        </span>
-                        <span class="meta-item">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            {{ $job->minimum_salary }} - {{ $job->maximum_salary }} DH
-                        </span>
-                        <span class="meta-item">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            {{ $job->timeAgo }}
-                        </span>
-                    </div>
-                </div>
-                <div class="job-card-footer">
-                    <div class="tags">
-                        <span class="tag-sm">{{ $job->category ?? 'General' }}</span>
-                    </div>
-                    <a href="{{ route('job-details', $job->id) }}" class="btn-apply">Apply Now</a>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-
-    <!-- CTA Section - Upload Resume -->
-    <section class="cta-upload-section reveal">
+    <!-- How it Works -->
+    <section class="steps-section">
         <div class="container">
-            <div class="cta-card">
-                <div class="cta-content">
-                    <span class="cta-badge">✨ Stand Out</span>
-                    <h2 class="cta-title">Get Discovered by Top Employers</h2>
-                    <p class="cta-description">Upload your resume and let opportunities come to you. Our intelligent matching connects you with roles that perfectly fit your profile.</p>
-                    <div class="cta-features">
-                        <div class="cta-feature">
-                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            <span>AI-powered job matching</span>
-                        </div>
-                        <div class="cta-feature">
-                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            <span>Instant alerts for new opportunities</span>
-                        </div>
-                        <div class="cta-feature">
-                            <svg class="check-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                            </svg>
-                            <span>Private & secure profile</span>
-                        </div>
-                    </div>
-                    <div class="cta-actions">
-                        <input type="file" id="resumeFile" accept=".pdf,.doc,.docx" hidden>
-                        <label for="resumeFile" class="btn-upload">
-                            <svg class="btn-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
-                            </svg>
-                            Upload Your Resume
-                        </label>
-                        <span class="file-note">PDF, DOC, DOCX (Max 5MB)</span>
-                    </div>
+            <div class="section-header text-center">
+                <h2>How it works</h2>
+                <p>Get hired in 3 simple steps</p>
+            </div>
+            <div class="steps-row">
+                <div class="step-item">
+                    <div class="step-number">1</div>
+                    <h3>Create Account</h3>
+                    <p>Register and complete your professional profile.</p>
                 </div>
-                <div class="cta-illustration">
-                    <div class="illustration-circle"></div>
-                    <svg class="illustration-svg" viewBox="0 0 400 400" fill="none">
-                        <rect x="80" y="100" width="240" height="280" rx="20" fill="white" opacity="0.9"/>
-                        <rect x="110" y="140" width="80" height="80" rx="40" fill="#667eea" opacity="0.2"/>
-                        <rect x="110" y="240" width="180" height="10" rx="5" fill="#e2e8f0"/>
-                        <rect x="110" y="260" width="140" height="10" rx="5" fill="#e2e8f0"/>
-                        <rect x="110" y="280" width="160" height="10" rx="5" fill="#e2e8f0"/>
-                        <rect x="110" y="310" width="180" height="10" rx="5" fill="#e2e8f0"/>
-                        <rect x="110" y="330" width="120" height="10" rx="5" fill="#e2e8f0"/>
-                    </svg>
+                <div class="step-line"></div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <h3>Find Jobs</h3>
+                    <p>Browse thousands of jobs that match your skills.</p>
+                </div>
+                <div class="step-line"></div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <h3>Apply & Win</h3>
+                    <p>Apply with one click and get your dream job.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why Choose Us Section -->
-    <section class="why-choose-section reveal">
+    <!-- Top Employers -->
+    <section class="employers-section bg-light">
         <div class="container">
-            <div class="section-header-center">
-                <h2 class="section-title">Why Choose JobPortal?</h2>
-                <p class="section-description">The smartest way to find your next opportunity</p>
+            <div class="section-header">
+                <h2>Top Employers</h2>
+                <a href="{{ route('companies') }}" class="btn-link">View All <i class="fas fa-arrow-right"></i></a>
             </div>
-            
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="benefit-icon-wrapper purple">
-                        <svg class="benefit-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
+            <div class="employers-grid">
+                @foreach($featuredCompanies as $company)
+                <a href="#" class="employer-card" data-aos="fade-up">
+                    <div class="emp-logo">
+                        @if($company->logo_url)
+                            <img src="{{ asset('image/' . $company->logo_url) }}" alt="{{ $company->name }}">
+                        @else
+                            <i class="fas fa-building"></i>
+                        @endif
                     </div>
-                    <h3 class="benefit-title">Lightning Fast</h3>
-                    <p class="benefit-description">Apply to jobs in seconds with our one-click application system. No more repetitive forms.</p>
-                </div>
-
-                <div class="benefit-card">
-                    <div class="benefit-icon-wrapper blue">
-                        <svg class="benefit-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="benefit-title">Verified Companies</h3>
-                    <p class="benefit-description">All companies are verified. Apply with confidence knowing you're dealing with legitimate employers.</p>
-                </div>
-
-                <div class="benefit-card">
-                    <div class="benefit-icon-wrapper green">
-                        <svg class="benefit-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="benefit-title">Real-Time Updates</h3>
-                    <p class="benefit-description">Get instant notifications when companies view your profile or new matching jobs are posted.</p>
-                </div>
-
-                <div class="benefit-card">
-                    <div class="benefit-icon-wrapper orange">
-                        <svg class="benefit-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="benefit-title">Smart Matching</h3>
-                    <p class="benefit-description">Our AI analyzes your skills and preferences to connect you with the most relevant opportunities.</p>
-                </div>
-
-                <div class="benefit-card">
-                    <div class="benefit-icon-wrapper pink">
-                        <svg class="benefit-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="benefit-title">Expert Support</h3>
-                    <p class="benefit-description">Access career coaches, resume reviews, and interview tips from industry professionals.</p>
-                </div>
-
-                <div class="benefit-card">
-                    <div class="benefit-icon-wrapper teal">
-                        <svg class="benefit-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="benefit-title">100% Free</h3>
-                    <p class="benefit-description">No hidden fees, no subscription costs. Create your profile and apply to unlimited jobs completely free.</p>
-                </div>
+                    <h4>{{ $company->name }}</h4>
+                    <span class="open-jobs">{{ $company->jobs_count }} Open Jobs</span>
+                </a>
+                @endforeach
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials-section reveal">
+    <!-- Testimonials -->
+    <section class="testimonials-section">
         <div class="container">
-            <div class="section-header-center">
-                <h2 class="section-title">Success Stories</h2>
-                <p class="section-description">Hear from professionals who found their dream jobs</p>
+            <div class="section-header text-center">
+                <h2>What our users say</h2>
             </div>
-
             <div class="testimonials-grid">
                 <div class="testimonial-card">
-                    <div class="testimonial-rating">
-                        <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                    </div>
-                    <p class="testimonial-text">
-                        "JobPortal made my job search incredibly easy. I found my dream role as a Senior Product Designer within two weeks. The platform's AI matching is spot-on!"
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                            <span>SM</span>
-                        </div>
-                        <div class="author-info">
-                            <h4 class="author-name">Sarah Mitchell</h4>
-                            <p class="author-role">Product Designer at Google</p>
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"I found my dream job within a week of signing up. The process was incredibly smooth and the direct chat feature helped me connect with recruiters instantly."</p>
+                    <div class="user-info">
+                        <div class="avatar-sm">S</div>
+                        <div>
+                            <h5>Sarah Jenkins</h5>
+                            <span>Software Engineer</span>
                         </div>
                     </div>
                 </div>
-
                 <div class="testimonial-card">
-                    <div class="testimonial-rating">
-                        <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                    </div>
-                    <p class="testimonial-text">
-                        "The best job platform I've used. Got multiple interview requests within days of uploading my resume. Now I'm a Software Engineer at Microsoft!"
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                            <span>JC</span>
-                        </div>
-                        <div class="author-info">
-                            <h4 class="author-name">James Chen</h4>
-                            <p class="author-role">Software Engineer at Microsoft</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-rating">
-                        <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                        <svg class="star-icon" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                        </svg>
-                    </div>
-                    <p class="testimonial-text">
-                        "As a recruiter, I've hired amazing talent through JobPortal. The candidate quality is exceptional and the platform is incredibly user-friendly."
-                    </p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
-                            <span>EP</span>
-                        </div>
-                        <div class="author-info">
-                            <h4 class="author-name">Emily Parker</h4>
-                            <p class="author-role">HR Manager at Amazon</p>
+                    <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                    <p>"As a recruiter, this is the best platform I've used. The candidate quality is top-notch and the dashboard makes managing applications a breeze."</p>
+                    <div class="user-info">
+                        <div class="avatar-sm bg-primary">M</div>
+                        <div>
+                            <h5>Mike Ross</h5>
+                            <span>HR Manager @ TechCorp</span>
                         </div>
                     </div>
                 </div>
@@ -537,75 +232,234 @@
         </div>
     </section>
 
-    <!-- Newsletter Section -->
-    <section class="newsletter-section reveal">
+    <!-- Newsletter -->
+    <section class="newsletter-section">
         <div class="container">
-            <div class="newsletter-card">
+            <div class="newsletter-box">
                 <div class="newsletter-content">
-                    <h2 class="newsletter-title">Never Miss a Job Opportunity</h2>
-                    <p class="newsletter-description">Subscribe to get weekly job alerts, career tips, and exclusive hiring events</p>
+                    <h2>Subscribe to our newsletter</h2>
+                    <p>Get the latest job alerts and career advice delivered to your inbox.</p>
                 </div>
-                <div class="newsletter-form">
-                    <div class="email-input-wrapper">
-                        <svg class="email-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                        </svg>
-                        <input type="email" placeholder="Enter your email address" class="newsletter-input">
-                        <button class="newsletter-btn">Subscribe Now</button>
-                    </div>
-                    <p class="privacy-note">🔒 We respect your privacy. Unsubscribe anytime.</p>
-                </div>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed!');">
+                    <input type="email" placeholder="Enter your email address">
+                    <button type="submit">Subscribe</button>
+                </form>
             </div>
         </div>
     </section>
 
+    <!-- CTA -->
+    <section class="cta-section bg-dark">
+        <div class="container text-center">
+            <h2>Ready to take the next step?</h2>
+            <p>Join millions of professionals and companies growing together.</p>
+            <div class="cta-buttons-center">
+                <a href="{{ route('sign_up') }}" class="btn-primary-lg">Get Started Now</a>
+                <a href="{{ route('contact') }}" class="btn-outline-lg">Contact Sales</a>
+            </div>
+        </div>
+    </section>
+</div>
 
+<style>
+    /* Global Helpers */
+    .home-wrapper { overflow-x: hidden; }
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+    .text-primary { color: var(--primary); }
+    .text-center { text-align: center; }
+    .bg-light { background: var(--gray-50); }
+    .bg-dark { background: var(--gray-900); color: white; }
+    
+    .section-header { margin-bottom: 2.5rem; }
+    .section-header h2 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--gray-900); }
+    .section-header p { color: var(--gray-500); font-size: 1.125rem; }
+    .section-header { display: flex; justify-content: space-between; align-items: flex-end; }
+    .section-header.text-center { display: block; }
 
-    <!-- Scroll to Top Button -->
-    <button id="scrollToTop" class="scroll-to-top">
-        <svg class="scroll-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
-        </svg>
-    </button>
+    /* Hero */
+    .hero-section { padding: 5rem 0; background: white; }
+    .hero-content { display: flex; align-items: center; gap: 4rem; }
+    .hero-text { flex: 1.2; }
+    .hero-text h1 { font-size: 3.25rem; line-height: 1.1; margin-bottom: 1.5rem; color: var(--gray-900); }
+    .hero-text p { font-size: 1.125rem; color: var(--gray-500); margin-bottom: 2.5rem; max-width: 500px; }
+    
+    .hero-search-form {
+        display: flex; background: white; border: 1px solid var(--gray-200); padding: 0.5rem;
+        border-radius: 0.75rem; box-shadow: 0 4px 20px rgba(0,0,0,0.05); margin-bottom: 3rem;
+    }
+    .input-group { flex: 1; display: flex; align-items: center; padding: 0.5rem 1rem; }
+    .input-group i { color: var(--gray-400); margin-right: 0.75rem; }
+    .input-group input { border: none; width: 100%; outline: none; font-size: 1rem; color: var(--gray-800); }
+    .input-divider { width: 1px; background: var(--gray-200); margin: 0.5rem 0; }
+    .btn-search {
+        background: var(--primary); color: white; border: none; padding: 0.75rem 2rem;
+        border-radius: 0.5rem; font-weight: 600; cursor: pointer; transition: background 0.2s;
+    }
+    .btn-search:hover { background: var(--primary-dark); }
+    
+    .hero-stats { display: flex; gap: 3rem; }
+    .stat-item strong { display: block; font-size: 1.5rem; color: var(--gray-900); }
+    .stat-item span { font-size: 0.875rem; color: var(--gray-500); }
+    
+    .hero-image { flex: 0.8; }
+    .illustration-placeholder {
+        width: 100%; height: 400px; background: var(--gray-50); border-radius: 2rem;
+        display: flex; align-items: center; justify-content: center; font-size: 5rem; color: var(--gray-300);
+    }
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Scroll Animations
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
+    /* Trusted Logos */
+    .logos-section { padding: 3rem 0; border-bottom: 1px solid var(--gray-50); text-align: center; }
+    .section-label { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gray-400); margin-bottom: 2rem; font-weight: 600; }
+    .company-logos { display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap; opacity: 0.6; }
+    .logo-item { font-size: 1.5rem; font-weight: 600; color: var(--gray-500); display: flex; align-items: center; gap: 0.5rem; }
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
+    /* Why Section */
+    .why-section { padding: 5rem 0; }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .feature-card { background: white; padding: 2rem; border-radius: 1rem; border: 1px solid var(--gray-200); text-align: center; transition: transform 0.2s; }
+    .feature-card:hover { transform: translateY(-5px); }
+    .icon-box {
+        width: 60px; height: 60px; border-radius: 12px; margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+    }
+    .bg-blue-light { background: #eff6ff; color: var(--primary); }
+    .bg-purple-light { background: #f5f3ff; color: #8b5cf6; }
+    .bg-green-light { background: #f0fdf4; color: var(--success); }
+    .feature-card h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .feature-card p { color: var(--gray-500); }
 
-            document.querySelectorAll('.reveal').forEach(el => {
-                observer.observe(el);
-            });
+    /* Featured Jobs */
+    .jobs-section { padding: 5rem 0; }
+    .jobs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .job-card-clean {
+        background: white; border: 1px solid var(--gray-200); border-radius: 1rem; padding: 1.5rem;
+        display: flex; flex-direction: column; transition: all 0.2s;
+    }
+    .job-card-clean:hover { border-color: var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+    .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+    .employer-logo {
+        width: 48px; height: 48px; border-radius: 10px; background: var(--gray-50);
+        display: flex; align-items: center; justify-content: center; overflow: hidden;
+    }
+    .employer-logo img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
+    .logo-char { font-size: 1.25rem; font-weight: 700; color: var(--gray-400); }
+    .badge { padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 500; }
+    .badge-primary { background: #eff6ff; color: var(--primary); }
+    .badge-light { background: var(--gray-100); color: var(--gray-600); }
+    .card-content h3 { font-size: 1.125rem; margin-bottom: 0.25rem; }
+    .card-content h3 a { text-decoration: none; color: var(--gray-900); }
+    .card-content .company-name { font-size: 0.875rem; color: var(--gray-500); margin-bottom: 1rem; }
+    .job-details { display: flex; gap: 1rem; font-size: 0.875rem; color: var(--gray-500); margin-bottom: 1.5rem; }
+    .card-footer { margin-top: auto; display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid var(--gray-100); }
+    .time-ago { font-size: 0.75rem; color: var(--gray-400); }
+    .btn-apply-sm {
+        background: var(--primary); color: white; padding: 0.5rem 1rem; border-radius: 0.5rem;
+        text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: background 0.2s;
+    }
+    .btn-apply-sm:hover { background: var(--primary-dark); }
+    .btn-link { color: var(--primary); text-decoration: none; font-weight: 500; }
 
-            // Scroll to Top
-            const scrollToTopBtn = document.getElementById('scrollToTop');
-            
-            window.addEventListener('scroll', () => {
-                if (window.pageYOffset > 300) {
-                    scrollToTopBtn.classList.add('visible');
-                } else {
-                    scrollToTopBtn.classList.remove('visible');
-                }
-            });
+    /* Categories */
+    .categories-section { padding: 5rem 0; }
+    .categories-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+    .category-pill {
+        background: white; border: 1px solid var(--gray-200); padding: 0.75rem 1.5rem;
+        border-radius: 50px; text-decoration: none; color: var(--gray-600); font-weight: 500;
+        transition: all 0.2s; display: flex; align-items: center; gap: 0.5rem;
+    }
+    .category-pill:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-2px); }
 
-            scrollToTopBtn.addEventListener('click', () => {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+    /* Steps */
+    .steps-section { padding: 5rem 0; }
+    .steps-row { display: flex; justify-content: space-between; align-items: flex-start; margin-top: 3rem; position: relative; }
+    .step-item { flex: 1; text-align: center; position: relative; z-index: 2; }
+    .step-number {
+        width: 50px; height: 50px; background: var(--primary); color: white; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center; font-size: 1.25rem; font-weight: 700; margin: 0 auto 1.5rem;
+        box-shadow: 0 0 0 8px white;
+    }
+    .step-line { flex: 1; height: 2px; background: var(--gray-200); margin-top: 25px; }
+    .step-item h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+    .step-item p { color: var(--gray-500); max-width: 200px; margin: 0 auto; }
+
+    /* Employers */
+    .employers-section { padding: 5rem 0; }
+    .employers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .employer-card {
+        background: white; border: 1px solid var(--gray-200); border-radius: 1rem; padding: 2rem;
+        text-align: center; text-decoration: none; color: inherit; transition: all 0.2s;
+    }
+    .employer-card:hover { border-color: var(--primary); transform: translateY(-5px); }
+    .emp-logo {
+        width: 64px; height: 64px; border-radius: 12px; background: var(--gray-50);
+        margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center; color: var(--gray-400); font-size: 1.5rem;
+    }
+    .emp-logo img { width: 100%; height: 100%; object-fit: contain; padding: 4px; }
+    .employer-card h4 { font-size: 1.125rem; margin-bottom: 0.5rem; color: var(--gray-900); }
+    .open-jobs { font-size: 0.875rem; color: var(--primary); font-weight: 500; }
+
+    /* Testimonials */
+    .testimonials-section { padding: 5rem 0; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; max-width: 900px; margin: 0 auto; }
+    .testimonial-card {
+        background: white; padding: 2.5rem; border-radius: 1rem; border: 1px solid var(--gray-200);
+        position: relative;
+    }
+    .stars { color: var(--accent); margin-bottom: 1rem; font-size: 0.875rem; }
+    .testimonial-card p { font-size: 1.125rem; color: var(--gray-700); font-style: italic; margin-bottom: 2rem; line-height: 1.6; }
+    .user-info { display: flex; align-items: center; gap: 1rem; }
+    .avatar-sm { width: 40px; height: 40px; background: var(--gray-200); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--gray-600); }
+    .user-info h5 { font-size: 0.9375rem; margin: 0; color: var(--gray-900); }
+    .user-info span { font-size: 0.75rem; color: var(--gray-500); }
+
+    /* Newsletter */
+    .newsletter-section { padding: 5rem 0; background: white; border-top: 1px solid var(--gray-50); }
+    .newsletter-box {
+        background: var(--gray-50); border-radius: 2rem; padding: 3rem;
+        display: flex; justify-content: space-between; align-items: center; gap: 2rem;
+    }
+    .newsletter-content h2 { font-size: 1.75rem; margin-bottom: 0.5rem; }
+    .newsletter-content p { color: var(--gray-500); }
+    .newsletter-form { display: flex; gap: 1rem; flex: 1; justify-content: flex-end; }
+    .newsletter-form input {
+        padding: 0.75rem 1.5rem; border: 1px solid var(--gray-200); border-radius: 0.5rem;
+        width: 100%; max-width: 300px; outline: none;
+    }
+    .newsletter-form button {
+        background: var(--dark); color: white; border: none; padding: 0.75rem 2rem;
+        border-radius: 0.5rem; font-weight: 600; cursor: pointer;
+    }
+
+    /* CTA */
+    .cta-section { padding: 6rem 0; }
+    .bg-dark h2 { margin-bottom: 1rem; }
+    .bg-dark p { color: var(--gray-400); margin-bottom: 3rem; font-size: 1.25rem; }
+    .cta-buttons-center { display: flex; justify-content: center; gap: 1rem; }
+    .btn-primary-lg {
+        background: var(--primary); color: white; padding: 1rem 2.5rem; border-radius: 0.5rem;
+        font-weight: 600; text-decoration: none; font-size: 1.125rem; transition: background 0.2s;
+    }
+    .btn-primary-lg:hover { background: var(--primary-dark); }
+    .btn-outline-lg {
+        border: 2px solid var(--gray-700); color: white; padding: 1rem 2.5rem; border-radius: 0.5rem;
+        font-weight: 600; text-decoration: none; font-size: 1.125rem; transition: all 0.2s;
+    }
+    .btn-outline-lg:hover { border-color: white; background: transparent; }
+
+    @media (max-width: 900px) {
+        .hero-content { flex-direction: column; text-align: center; }
+        .hero-search-form { flex-direction: column; }
+        .input-divider { display: none; }
+        .hero-stats { justify-content: center; flex-wrap: wrap; }
+        
+        .features-grid, .jobs-grid, .employers-grid { grid-template-columns: 1fr; }
+        .steps-row { flex-direction: column; align-items: center; gap: 2rem; margin-top: 0; }
+        .step-line { display: none; }
+        
+        .newsletter-box { flex-direction: column; text-align: center; }
+        .newsletter-form { flex-direction: column; width: 100%; }
+        .newsletter-form input { max-width: 100%; }
+        
+        .testimonials-grid { grid-template-columns: 1fr; }
+    }
+</style>
 @endsection
