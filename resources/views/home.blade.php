@@ -84,7 +84,7 @@
     <section class="why-section">
         <div class="container">
             <div class="section-header text-center" data-aos="fade-up">
-                <span class="sub-header">Why Rekrute</span>
+                <span class="sub-header">Why Rekrify</span>
                 <h2>Revolutionizing the Job Search</h2>
                 <p>We combine advanced technology with human-centric design to make job hunting effortless.</p>
             </div>
@@ -274,7 +274,7 @@
             <div class="testimonials-slider-view">
                 <div class="testimonial-premium" data-aos="fade-right">
                     <div class="quote-mark"><i class="fas fa-quote-left"></i></div>
-                    <p>"Rekrute simplified my job search beyond my expectations. The AI matches were actually relevant, and the direct chat feature is a game changer. I secured a role at a top tech firm within two weeks."</p>
+                    <p>"Rekrify simplified my job search beyond my expectations. The AI matches were actually relevant, and the direct chat feature is a game changer. I secured a role at a top tech firm within two weeks."</p>
                     <div class="testimonial-profile">
                         <div class="profile-avatar bg-blue-100">SJ</div>
                         <div class="profile-details">
@@ -285,7 +285,7 @@
                 </div>
                 <div class="testimonial-premium" data-aos="fade-left">
                     <div class="quote-mark"><i class="fas fa-quote-left"></i></div>
-                    <p>"The quality of candidates we receive through Rekrute is significantly higher than other platforms. The verification system saves us hours of screening time. Highly recommended for growth teams."</p>
+                    <p>"The quality of candidates we receive through Rekrify is significantly higher than other platforms. The verification system saves us hours of screening time. Highly recommended for growth teams."</p>
                     <div class="testimonial-profile">
                         <div class="profile-avatar bg-purple-100">MR</div>
                         <div class="profile-details">

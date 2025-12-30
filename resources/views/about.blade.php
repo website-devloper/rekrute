@@ -51,7 +51,7 @@
                     <span class="section-badge">Our Mission</span>
                     <h2 class="section-title">Our Story</h2>
                     <p class="mission-text">
-                        Founded in 2023, Rekrute started with a simple idea: job hunting shouldn't be painful. 
+                        Founded in 2023, Rekrify started with a simple idea: job hunting shouldn't be painful. 
                         We saw a broken system filled with ghosting, irrelevant matches, and poor user experiences.
                     </p>
                     <p class="mission-text">
@@ -156,7 +156,7 @@
             <div class="section-header" data-aos="fade-up">
                 <span class="section-badge">Meet the Team</span>
                 <h2 class="section-title">Leadership</h2>
-                <p class="section-subtitle">The people behind Rekrute's success</p>
+                <p class="section-subtitle">The people behind Rekrify's success</p>
             </div>
             
             <div class="team-grid">
@@ -214,7 +214,7 @@
             <div class="cta-card">
                 <div class="cta-content">
                     <h2>Ready to Transform Your Career?</h2>
-                    <p>Join thousands of professionals who have found their dream jobs through Rekrute.</p>
+                    <p>Join thousands of professionals who have found their dream jobs through Rekrify.</p>
                 </div>
                 <div class="cta-actions">
                     <a href="{{ route('jobs') }}" class="btn-cta-primary">

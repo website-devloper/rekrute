@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Sign In - Rekrute</title>
+    <title>Sign In - Rekrify</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Sign in to Rekrute - Your AI-Powered Job Portal">
+    <meta name="description" content="Sign in to Rekrify - Your AI-Powered Job Portal">
     
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -550,7 +550,7 @@
                             <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
                         </svg>
                     </div>
-                    <span class="logo-text">REKR<span>UTE</span></span>
+                    <span class="logo-text">REKR<span>IFY</span></span>
                 </div>
                 
                 <h1 class="branding-title">Welcome Back!</h1>

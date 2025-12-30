@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
         // 2. Create Candidates
         // Create one known candidate for testing
         candidate::factory()->create([
-            'email' => 'candidate@rekrute.com',
+            'email' => 'candidate@rekrify.com',
             'password' => bcrypt('password'), // password
             'first_name' => 'John',
             'last_name' => 'Can',
@@ -42,9 +42,9 @@ class DatabaseSeeder extends Seeder
         // 3. Create Employers and Jobs
         // Create one known employer for testing
         $testEmployer = employer::factory()->create([
-            'email_adress' => 'employer@rekrute.com',
+            'email_adress' => 'employer@rekrify.com',
             'password' => bcrypt('password'), // password
-            'name' => 'Rekrute Corp',
+            'name' => 'Rekrify Corp',
         ]);
 
         Job::factory(5)->create([

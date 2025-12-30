@@ -5,7 +5,7 @@
             <div class="logo-icon">
                 <i class="fas fa-rocket"></i>
             </div>
-            <span class="logo-text">Rekrute<span class="dot">.</span></span>
+            <span class="logo-text">Rekrify<span class="dot">.</span></span>
         </a>
 
         <!-- Desktop Navigation -->
@@ -65,7 +65,7 @@
     <div class="mobile-menu-overlay" id="mobileMenu">
         <div class="mobile-menu-inner">
             <div class="mobile-menu-header">
-                <span class="logo-text">Rekrute<span class="dot">.</span></span>
+                <span class="logo-text">Rekrify<span class="dot">.</span></span>
                 <button class="close-mobile" onclick="toggleMobileMenu()">&times;</button>
             </div>
             <div class="mobile-links">

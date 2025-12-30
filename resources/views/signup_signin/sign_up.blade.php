@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Sign Up - Rekrute</title>
+    <title>Sign Up - Rekrify</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Create your Rekrute account - Join thousands finding their dream jobs">
+    <meta name="description" content="Create your Rekrify account - Join thousands finding their dream jobs">
     
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -406,7 +406,7 @@
                         <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
                     </svg>
                 </div>
-                <span class="logo-text">REKR<span>UTE</span></span>
+                <span class="logo-text">REKR<span>IFY</span></span>
             </div>
             <h1>Create Your Account</h1>
             <p>Already have an account? <a href="{{ route('sign_in') }}">Sign in</a></p>

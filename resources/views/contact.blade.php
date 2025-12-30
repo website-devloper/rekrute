@@ -33,7 +33,7 @@
                     </div>
                     <h3>Email Us</h3>
                     <p>We'll respond within 24 hours</p>
-                    <a href="mailto:support@rekrute.com" class="contact-link">support@rekrute.com</a>
+                    <a href="mailto:support@rekrify.com" class="contact-link">support@rekrify.com</a>
                 </div>
                 
                 <div class="contact-info-card">
@@ -142,11 +142,11 @@
                             
                             <div class="faq-item">
                                 <button class="faq-question">
-                                    <span>Is Rekrute free to use?</span>
+                                    <span>Is Rekrify free to use?</span>
                                     <i class="fas fa-chevron-down"></i>
                                 </button>
                                 <div class="faq-answer">
-                                    <p>Yes! Job seekers can use Rekrute completely free. Employers have various pricing plans for posting jobs.</p>
+                                    <p>Yes! Job seekers can use Rekrify completely free. Employers have various pricing plans for posting jobs.</p>
                                 </div>
                             </div>
                             

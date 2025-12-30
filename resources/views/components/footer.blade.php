@@ -9,7 +9,7 @@
             <div class="footer-brand-col">
                 <a href="/" class="footer-logo">
                     <div class="logo-icon-sm"><i class="fas fa-rocket"></i></div>
-                    <span class="logo-text">Rekrute<span class="dot">.</span></span>
+                    <span class="logo-text">Rekrify<span class="dot">.</span></span>
                 </a>
                 <p class="brand-description">Empowering professionals to find their true calling and helping companies build exceptional teams through AI-driven recruitment.</p>
                 <div class="social-pills">
@@ -53,7 +53,7 @@
 
         <div class="footer-bottom-bar">
             <div class="copyright">
-                &copy; {{ date('Y') }} Rekrute Global Inc. Made with <i class="fas fa-heart text-danger"></i> for the future of work.
+                &copy; {{ date('Y') }} Rekrify Global Inc. Made with <i class="fas fa-heart text-danger"></i> for the future of work.
             </div>
             <div class="footer-badges">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" alt="Stripe" class="footer-badge-img">

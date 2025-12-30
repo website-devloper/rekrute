@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Forgot Password - Rekrute</title>
+    <title>Forgot Password - Rekrify</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
@@ -239,7 +239,7 @@
                         <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
                     </svg>
                 </div>
-                <span class="logo-text">REKR<span>UTE</span></span>
+                <span class="logo-text">REKR<span>IFY</span></span>
             </div>
 
             <div class="forgot-header">

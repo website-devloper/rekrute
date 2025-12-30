@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Rekrute - Your AI-Powered Job Portal. Connect with top employers and find your dream career opportunity.">
+    <meta name="description" content="Rekrify - Your AI-Powered Job Portal. Connect with top employers and find your dream career opportunity.">
     <meta name="keywords" content="jobs, careers, recruitment, hiring, job portal, employment">
     <meta name="theme-color" content="#3b82f6">
     
@@ -211,7 +211,7 @@
         a:hover { color: var(--primary); }
     </style>
 
-    <title>Rekrute - Find Your Dream Job</title>
+    <title>Rekrify - Find Your Dream Job</title>
 </head>
 <body>
     <!-- Page Loader -->
