@@ -15,7 +15,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <!-- Modern Design System -->
-    @vite(['resources/css/app-modern.css', 'resources/js/app.js'])
+    @vite(['resources/css/unified-design.css', 'resources/js/app.js'])
 </head>
 <body>
     <!-- Page Loader -->

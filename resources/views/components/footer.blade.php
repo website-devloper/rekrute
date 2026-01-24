@@ -80,11 +80,11 @@
     
     .footer-logo { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; margin-bottom: 2rem; }
     .logo-icon-sm { 
-        width: 32px; height: 32px; background: #3b82f6; border-radius: 8px; 
+        width: 32px; height: 32px; background: #6366f1; border-radius: 8px; 
         display: flex; align-items: center; justify-content: center; color: white; font-size: 0.9rem;
     }
     .footer-logo .logo-text { font-family: 'Outfit', sans-serif; font-size: 1.5rem; font-weight: 800; color: white; }
-    .footer-logo .dot { color: #3b82f6; }
+    .footer-logo .dot { color: #6366f1; }
 
     .brand-description { font-size: 1rem; line-height: 1.7; margin-bottom: 2.5rem; color: #64748b; }
     
@@ -94,7 +94,7 @@
         border: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center;
         color: #94a3b8; transition: all 0.3s;
     }
-    .social-pill:hover { background: #3b82f6; color: white; transform: translateY(-3px); border-color: #3b82f6; }
+    .social-pill:hover { background: #6366f1; color: white; transform: translateY(-3px); border-color: #6366f1; }
 
     .footer-links-grid { flex: 2; display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; }
     .footer-col h5 { color: white; font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem; font-family: 'Outfit', sans-serif; }

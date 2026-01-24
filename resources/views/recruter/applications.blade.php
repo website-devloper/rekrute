@@ -234,7 +234,7 @@
     }
 
     .status-badge.pending { background: rgba(245, 158, 11, 0.1); color: #d97706; }
-    .status-badge.reviewed { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+    .status-badge.reviewed { background: rgba(59, 130, 246, 0.1); color: #6366f1; }
     .status-badge.shortlisted { background: rgba(139, 92, 246, 0.1); color: #8b5cf6; }
     .status-badge.accepted { background: rgba(16, 185, 129, 0.1); color: var(--success); }
     .status-badge.rejected { background: rgba(239, 68, 68, 0.1); color: var(--danger); }
@@ -290,3 +290,4 @@
     }
 </style>
 @endsection
+

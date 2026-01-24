@@ -41,7 +41,7 @@
                                 <div style="width: 40px; height: 40px; background: #f8fafc; border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; color: #64748b;"><i class="fas fa-globe"></i></div>
                                 <div>
                                     <span style="display: block; font-size: 0.85rem; color: #94a3b8; font-weight: 600; margin-bottom: 0.25rem;">Website</span>
-                                    <a href="#" style="color: #3b82f6; font-weight: 600; text-decoration: none;">Visit Website <i class="fas fa-external-link-alt" style="font-size: 0.75rem; margin-left: 5px;"></i></a>
+                                    <a href="#" style="color: #6366f1; font-weight: 600; text-decoration: none;">Visit Website <i class="fas fa-external-link-alt" style="font-size: 0.75rem; margin-left: 5px;"></i></a>
                                 </div>
                             </div>
 
@@ -73,7 +73,7 @@
                         <div style="margin-top: 2.5rem; padding-top: 2rem; border-top: 1px solid #f1f5f9;">
                             <h5 style="font-size: 1rem; font-weight: 700; color: #0f172a; margin-bottom: 1rem;">Social Media</h5>
                             <div style="display: flex; gap: 0.75rem;">
-                                <a href="#" style="width: 40px; height: 40px; background: #3b82f6; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; transition: transform 0.2s;"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" style="width: 40px; height: 40px; background: #6366f1; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; transition: transform 0.2s;"><i class="fab fa-linkedin-in"></i></a>
                                 <a href="#" style="width: 40px; height: 40px; background: #1da1f2; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; transition: transform 0.2s;"><i class="fab fa-twitter"></i></a>
                                 <a href="#" style="width: 40px; height: 40px; background: #e1306c; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; transition: transform 0.2s;"><i class="fab fa-instagram"></i></a>
                             </div>
@@ -97,7 +97,7 @@
                     <div style="margin-top: 4rem;">
                         <h2 style="font-size: 1.75rem; font-weight: 800; color: #0f172a; margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: center;">
                             Existing Opportunities
-                            <span style="font-size: 0.9rem; font-weight: 600; color: white; background: #3b82f6; padding: 0.25rem 0.75rem; border-radius: 50px;">{{ $company->jobs->count() }} active</span>
+                            <span style="font-size: 0.9rem; font-weight: 600; color: white; background: #6366f1; padding: 0.25rem 0.75rem; border-radius: 50px;">{{ $company->jobs->count() }} active</span>
                         </h2>
 
                         @if($company->jobs->count() > 0)
@@ -118,7 +118,7 @@
                                         </div>
                                     </div>
                                     <div style="flex-shrink: 0;">
-                                        <a href="{{ route('job-details', $job->id) }}" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #eff6ff; color: #3b82f6; font-weight: 700; padding: 0.75rem 1.5rem; border-radius: 0.75rem; text-decoration: none; transition: all 0.2s;">
+                                        <a href="{{ route('job-details', $job->id) }}" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #eff6ff; color: #6366f1; font-weight: 700; padding: 0.75rem 1.5rem; border-radius: 0.75rem; text-decoration: none; transition: all 0.2s;">
                                             Apply Now <i class="fas fa-arrow-right"></i>
                                         </a>
                                     </div>
@@ -140,7 +140,7 @@
 
     <style>
         .channel-social a:hover { transform: translateY(-3px); }
-        .job-card-row:hover { border-color: #3b82f6; box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.15); transform: translateY(-2px); }
-        .job-card-row:hover a { background: #3b82f6; color: white; }
+        .job-card-row:hover { border-color: #6366f1; box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.15); transform: translateY(-2px); }
+        .job-card-row:hover a { background: #6366f1; color: white; }
     </style>
 @endsection
