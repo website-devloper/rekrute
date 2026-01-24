@@ -101,7 +101,6 @@
                                     
                                     <form action="{{ route('recruiter.job.toggle', $job->id) }}" method="POST">
                                         @csrf
-                                        @method('PATCH')
                                         <input type="hidden" name="status" value="{{ $job->status == 'active' ? 'paused' : 'active' }}">
                                         <button type="submit" class="btn-icon" title="{{ $job->status == 'active' ? 'Pause' : 'Activate' }}">
                                             <i class="fas {{ $job->status == 'active' ? 'fa-pause' : 'fa-play' }}"></i>

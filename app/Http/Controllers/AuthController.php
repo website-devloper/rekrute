@@ -92,4 +92,30 @@ class AuthController extends Controller
 
         return redirect('/');
     }
+
+    // Forgot Password Logic
+    public function forgotPasswordMail(Request $request) 
+    {
+        $request->validate(['email' => 'required|email']);
+        
+        // Check if user exists
+        $user = candidate::where('email', $request->email)->first() ?? 
+               employer::where('email_adress', $request->email)->first();
+               
+        if (!$user) {
+            return back()->withErrors(['email' => 'We can\'t find a user with that e-mail address.']);
+        }
+
+        // In a real app, we would send an email here.
+        // For this demo/local env, we'll simulate it by putting the code in the session 
+        // and redirecting to the code verification page.
+        
+        $code = rand(1000, 9999);
+        // Store code in session or DB for verification
+        // For simplicity in this existing structure:
+        session(['reset_code' => $code, 'reset_email' => $request->email]);
+        
+        // Redirect to code verification page
+        return redirect()->route('code_verification')->with('success', "We have sent a verification code to your email. (Simulated Code: $code)");
+    }
 }

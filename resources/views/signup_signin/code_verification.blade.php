@@ -13,6 +13,11 @@
         <div class="row" >
             <div class="col-md-4 offset-md-4 form">
                 <form action="forgot-password.php" method="POST" autocomplete="">
+                    @if(session('success'))
+                        <div class="alert alert-success text-center" style="background: #d4edda; color: #155724; padding: 10px; border-radius: 5px; margin-bottom: 20px;">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                     <h2 >Code Verification</h2>
                     <div class="form-group" >
                         <label >
@@ -21,7 +26,7 @@
                           </label>
                     </div>
                     <div class="form-group">
-                        <a href="/new-pass" style="text-decoration: none; border: none;"><input class="form-control button" type="button" name="check-email" value="submit"></a>
+                        <a href="{{ route('new_password') }}" style="text-decoration: none; border: none;"><input class="form-control button" type="button" name="check-email" value="submit"></a>
                     </div>
                 </form>
             </div>

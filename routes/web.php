@@ -27,6 +27,9 @@ Route::controller(HomeController::class)->group(function () {
         Route::get('/sign_in', 'SignInview')->name('sign_in');
         Route::get('/sign_up', 'SignUpview')->name('sign_up');
         Route::get('/forgot-password', 'ForgotPassword')->name('forgot_password'); 
+        Route::get('/code-verification', 'CodeVerification')->name('code_verification');
+        Route::get('/new-password', 'NewPass')->name('new_password');
+        Route::get('/password-reset-success', 'SuccessfullChangePass')->name('password_reset_success'); 
     });
 });
 
