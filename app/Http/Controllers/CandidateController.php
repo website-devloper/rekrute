@@ -228,11 +228,11 @@ class CandidateController extends Controller
         $candidate = Auth::guard('candidate')->user();
         
         // Verify current password
-        if (hash('sha256', $request->current_password) !== $candidate->password) {
+        if (!\Illuminate\Support\Facades\Hash::check($request->current_password, $candidate->password)) {
             return back()->with('error', 'Current password is incorrect.');
         }
         
-        $candidate->password = hash('sha256', $request->new_password);
+        $candidate->password = \Illuminate\Support\Facades\Hash::make($request->new_password);
         $candidate->save();
         
         return back()->with('success', 'Password changed successfully!');

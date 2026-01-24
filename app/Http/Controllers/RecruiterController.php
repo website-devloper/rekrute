@@ -357,11 +357,11 @@ class RecruiterController extends Controller
         
         $employer = Auth::guard('employer')->user();
         
-        if (hash('sha256', $request->current_password) !== $employer->password) {
+        if (!\Illuminate\Support\Facades\Hash::check($request->current_password, $employer->password)) {
             return back()->with('error', 'Current password is incorrect.');
         }
         
-        $employer->password = hash('sha256', $request->new_password);
+        $employer->password = \Illuminate\Support\Facades\Hash::make($request->new_password);
         $employer->save();
         
         return back()->with('success', 'Password changed successfully!');
