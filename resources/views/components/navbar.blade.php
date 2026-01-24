@@ -91,7 +91,7 @@
         position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
         background: transparent;
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        padding: 1.25rem 0;
+        padding: 0.5rem 0;
     }
 
     .clean-navbar.scrolled {
@@ -119,14 +119,17 @@
     .nav-menu { display: flex; gap: 2.5rem; list-style: none; margin: 0; padding: 0; }
     .nav-menu a {
         text-decoration: none; color: #475569; font-weight: 600; font-size: 0.95rem;
-        transition: all 0.3s; position: relative;
+        transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative;
+        padding: 0.25rem 0;
     }
     .nav-menu a::after {
-        content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
-        background: #3b82f6; transition: width 0.3s; border-radius: 2px;
+        content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 2px;
+        background: #3b82f6; transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        border-radius: 2px; transform: translateX(-50%);
+        box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
     }
     .nav-menu a:hover::after, .nav-menu a.active::after { width: 100%; }
-    .nav-menu a:hover, .nav-menu a.active { color: #0f172a; }
+    .nav-menu a:hover, .nav-menu a.active { color: #0f172a; background: transparent !important; }
 
     .nav-actions { display: flex; align-items: center; gap: 1.5rem; }
     
@@ -136,7 +139,7 @@
         border: none; cursor: pointer; text-decoration: none;
         box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.3);
     }
-    .btn-nav-primary:hover { background: #2563eb; transform: translateY(-2px); box-shadow: 0 12px 24px -5px rgba(59, 130, 246, 0.4); }
+    .btn-nav-primary:hover { background: #2563eb; transform: translateY(-2px); box-shadow: 0 12px 24px -5px rgba(59, 130, 246, 0.4); color:white}
 
     .btn-nav-login {
         color: #475569; font-weight: 700; font-size: 0.9rem; text-decoration: none;

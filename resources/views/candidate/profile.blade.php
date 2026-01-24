@@ -102,14 +102,14 @@
                         <div class="form-group">
                             <label>Profile Picture</label>
                             <div class="file-input-wrapper">
-                                <input type="file" name="img_url" class="form-control" accept="image/*">
+                                <input type="file" name="img_url" class="file-control" accept="image/*" style="display: block !important; opacity: 1 !important; visibility: visible !important; height: auto !important; padding: 10px;">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label>Resume (PDF, DOCX)</label>
                             <div class="file-input-wrapper">
-                                <input type="file" name="resume" class="form-control" accept=".pdf,.doc,.docx">
+                                <input type="file" name="resume" class="file-control" accept=".pdf,.doc,.docx" style="display: block !important; opacity: 1 !important; visibility: visible !important; height: auto !important; padding: 10px;">
                                 @if($candidate->resume)
                                     <div class="current-file">
                                         <i class="fas fa-file-pdf"></i>
@@ -218,6 +218,12 @@
         outline: none; border-color: var(--primary);
         box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
     }
+
+    .file-control {
+        width: 100%; padding: 0.5rem; border: 1px solid var(--gray-200);
+        border-radius: 0.5rem; background: white; font-size: 0.9375rem;
+    }
+
 
     .current-file {
         margin-top: 0.5rem; font-size: 0.875rem;

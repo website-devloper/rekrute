@@ -44,7 +44,7 @@
                         <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--gray-900);">Interested in this job?</h3>
                         
                         @auth('candidate')
-                        <form action="{{route('applyJob')}}" method="POST">
+                        <form action="{{route('candidate.applyJob')}}" method="POST">
                             @csrf
                             <input type="hidden" value="{{$jobDetails->id}}" name="JobId">
                             <button type="submit" style="width: 100%; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border: none; padding: 1rem; border-radius: 0.75rem; font-weight: 600; font-size: 1rem; cursor: pointer; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 0.5rem; box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(99, 102, 241, 0.4)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(99, 102, 241, 0.3)';">
@@ -71,7 +71,7 @@
                             <p style="font-size: 0.8125rem; color: var(--gray-500); margin-bottom: 0.75rem;">Posted by</p>
                             <div style="display: flex; align-items: center; gap: 0.875rem;">
                                 <div style="width: 48px; height: 48px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; color: white; font-size: 1.125rem;">{{ substr($recruter, 0, 1) }}</div>
-                                <div><h4 style="font-size: 1rem; font-weight: 700; margin: 0 0 0.125rem; color: var(--gray-900);">{{ $recruter }}</h4><a href="#" style="color: var(--primary); font-size: 0.875rem; text-decoration: none;">View Profile</a></div>
+                                <div><h4 style="font-size: 1rem; font-weight: 700; margin: 0 0 0.125rem; color: var(--gray-900);">{{ $recruter }}</h4><a href="{{ route('company_details', $jobDetails->employer_id) }}" style="color: var(--primary); font-size: 0.875rem; text-decoration: none;">View Profile</a></div>
                             </div>
                         </div>
 

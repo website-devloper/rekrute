@@ -31,7 +31,7 @@
                         <span style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 0.25rem;"><i class="fas fa-briefcase" style="color: var(--gray-400);"></i> {{ $company->service }}</span>
                         <span style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;"><i class="fas fa-map-marker-alt" style="color: var(--gray-400);"></i> {{ $company->city }}, {{ $company->country }}</span>
                     </div>
-                    <a href="#" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; border-radius: 50px; text-decoration: none; background: var(--gray-900); color: white; font-weight: 600; font-size: 0.875rem; transition: all 0.2s;" onmouseover="this.style.background='var(--primary)';" onmouseout="this.style.background='var(--gray-900)';">View {{ $company->jobs_count }} Jobs <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
+                    <a href="{{ route('company_details', $company->id) }}" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; border-radius: 50px; text-decoration: none; background: var(--gray-900); color: white; font-weight: 600; font-size: 0.875rem; transition: all 0.2s;" onmouseover="this.style.background='var(--primary)';" onmouseout="this.style.background='var(--gray-900)';">View Company Profile <i class="fas fa-arrow-right" style="font-size: 0.75rem;"></i></a>
                 </div>
                 @endforeach
             </div>

@@ -19,6 +19,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/contact', 'Contact')->name('contact');
     Route::get('/FindJobs', 'Jobs')->name('jobs');
     Route::get('/companies', 'Companies')->name('companies');
+    Route::get('/company/{id}', 'CompanyDetails')->name('company_details');
     Route::get('/job-details/{jobId}', 'JobDetails')->name("job-details");
     
     // Auth Views (Guests Only)

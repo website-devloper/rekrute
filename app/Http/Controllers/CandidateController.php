@@ -147,10 +147,14 @@ class CandidateController extends Controller
 
         $candidate = Auth::guard('candidate')->user();
         
+        if (!$candidate->resume) {
+            return back()->with('error', 'Please upload your resume in your profile before applying.');
+        }
+
         application::create([
             'candidate_id' => $candidateId,
             'job_id' => $jobId,
-            'resume' => $candidate->resume ?? null,
+            'resume' => $candidate->resume,
             'status' => 'pending'
         ]);
 

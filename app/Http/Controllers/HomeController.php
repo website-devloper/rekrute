@@ -96,6 +96,15 @@ class HomeController extends Controller
         $industries = employer::select('service')->distinct()->limit(8)->pluck('service'); // 'service' seems to be industry in the factory
         return view('companies', compact('companies', 'industries'));
     }
+
+    public function CompanyDetails($id)
+    {
+        $company = employer::withCount('jobs')->with(['jobs' => function($query) {
+            $query->latest()->limit(5); // Get latest 5 active jobs
+        }])->findOrFail($id);
+
+        return view('company_details', compact('company'));
+    }
     
     public function JobDetails(Request $request, $jobId)
     {

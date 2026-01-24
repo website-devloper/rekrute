@@ -11,19 +11,19 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text" data-aos="fade-right">
-                    <span class="hero-tagline">🚀 The Future of Recruitment</span>
+                    <span class="hero-tagline">The Future of Recruitment</span>
                     <h1>Find your <span class="gradient-text">dream job</span> <br> with confidence.</h1>
                     <p>Connect with top employers and discover opportunities that match your skills and aspirations. Verified listings and AI-powered matches.</p>
                     
                     <form action="{{ route('jobs') }}" method="GET" class="hero-search-form">
                         <div class="search-input-wrapper">
                             <div class="input-group">
-                                <i class="fas fa-search"></i>
+
                                 <input type="text" name="query" placeholder="Job title or keywords">
                             </div>
                             <div class="input-divider"></div>
                             <div class="input-group location-group">
-                                <i class="fas fa-map-marker-alt"></i>
+
                                 <input type="text" name="location" placeholder="City or zip code">
                             </div>
                         </div>
@@ -32,27 +32,6 @@
                             <i class="fas fa-arrow-right"></i>
                         </button>
                     </form>
-                    
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <div class="stat-icon"><i class="fas fa-briefcase"></i></div>
-                            <div class="stat-info">
-                                <strong>10k+</strong> <span>Active Jobs</span>
-                            </div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-icon"><i class="fas fa-building"></i></div>
-                            <div class="stat-info">
-                                <strong>500+</strong> <span>Companies</span>
-                            </div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-icon"><i class="fas fa-users"></i></div>
-                            <div class="stat-info">
-                                <strong>1M+</strong> <span>Candidates</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="hero-image-wrapper" data-aos="fade-left">
                     <div class="floating-image">
@@ -61,8 +40,7 @@
                 </div>
             </div>
         </div>
-    </section>
-
+</section>
     <!-- Trusted Companies -->
     <section class="logos-section">
         <div class="container">
@@ -243,7 +221,7 @@
             </div>
             <div class="employers-grid-modern">
                 @foreach($featuredCompanies->take(8) as $company)
-                <a href="#" class="employer-box" data-aos="fade-up">
+                <a href="{{ route('company_details', $company->id) }}" class="employer-box" data-aos="fade-up">
                     <div class="box-logo">
                         @if($company->logo_url)
                             <img src="{{ asset('image/' . $company->logo_url) }}" alt="{{ $company->name }}">
@@ -387,24 +365,41 @@
     .hero-text p { font-size: 1.25rem; line-height: 1.6; color: #475569; margin-bottom: 3rem; max-width: 580px; }
 
     .hero-search-form {
-        background: white; padding: 0.6rem; border-radius: 1.25rem; 
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08); 
-        display: flex; gap: 0.5rem; border: 1px solid #f1f5f9; margin-bottom: 4rem;
+        background: white; padding: 0.5rem 0.5rem 0.5rem 1.5rem; border-radius: 100px;
+        box-shadow: 0 15px 40px -10px rgba(0, 0, 0, 0.1); 
+        display: flex; align-items: center; 
+        border: 1px solid #e2e8f0; margin-bottom: 4rem;
+        max-width: 850px; margin-left: auto; margin-right: auto;
     }
-    .search-input-wrapper { display: flex; flex: 1; align-items: center; }
-    .hero-search-form .input-group { flex: 1; display: flex; align-items: center; padding: 0 1.25rem; }
-    .hero-search-form .input-group i { color: #94a3b8; font-size: 1.1rem; }
+    .search-input-wrapper { 
+        display: flex; flex: 1; align-items: center; height: 100%;
+    }
+    .hero-search-form .input-group { 
+        flex: 1; display: flex; align-items: center; 
+        padding: 0.5rem 1rem 0.5rem 0; position: relative;
+    }
+    .hero-search-form .input-group i { 
+        color: #1e293b; font-size: 1.1rem; margin-right: 0.8rem;
+        display: flex; align-items: center; justify-content: center;
+        width: 20px; height: 20px; line-height: 1; 
+        flex-shrink: 0; opacity: 0.8;
+    }
     .hero-search-form .input-group input { 
-        border: none; padding: 1rem 0.75rem; width: 100%; outline: none; 
+        border: none; padding: 0; 
+        flex: 1; width: auto; /* Fix: use flex instead of width: 100% */
+        outline: none; background: transparent;
         font-size: 1rem; font-weight: 500; color: #1e293b; 
+        margin: 0; line-height: 1.6; height: 100%;
     }
-    .input-divider { width: 1px; height: 30px; background: #e2e8f0; }
+    .hero-search-form .input-group input::placeholder { color: #64748b; font-weight: 400; }
+    .input-divider { width: 1px; height: 24px; background: #cbd5e1; margin: 0 1rem; }
     .btn-search {
-        background: #3b82f6; color: white; border: none; padding: 0 2.5rem; 
-        border-radius: 1rem; font-weight: 700; cursor: pointer; transition: transform 0.2s, background 0.2s;
-        display: flex; align-items: center; gap: 0.75rem;
+        background: #3b82f6; color: white; border: none; padding: 0.75rem 2rem; 
+        border-radius: 100px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+        display: flex; align-items: center; gap: 0.5rem; font-size: 1rem; line-height: 1;
+        height: auto;
     }
-    .btn-search:hover { background: #2563eb; transform: translateY(-2px); }
+    .btn-search:hover { background: #2563eb; transform: translateY(-1px); }
 
     .hero-stats { display: flex; gap: 3.5rem; border-top: 1px solid #f1f5f9; padding-top: 3rem; }
     .stat-item { display: flex; align-items: center; gap: 1rem; }
@@ -633,11 +628,12 @@
         .hero-content { flex-direction: column; text-align: center; }
         .hero-text p { margin-left: auto; margin-right: auto; }
         .hero-stats { justify-content: center; }
-        .hero-search-form { flex-direction: column; }
-        .search-input-wrapper { flex-direction: column; }
+        .hero-search-form { flex-direction: column; padding: 0.5rem; border-radius: 20px; }
+        .search-input-wrapper { flex-direction: column; width: 100%; }
         .input-divider { display: none; }
-        .hero-search-form .input-group { width: 100%; border-bottom: 1px solid #f1f5f9; }
-        .btn-search { width: 100%; padding: 1.25rem; justify-content: center; }
+        .hero-search-form .input-group { width: 100%; padding: 1rem; border-bottom: 1px solid #f1f5f9; }
+        .hero-search-form .input-group:last-child { border-bottom: none; }
+        .btn-search { width: 100%; padding: 1rem; justify-content: center; border-radius: 15px; margin-top: 0.5rem; }
         
         .cta-newsletter-card { flex-direction: column; gap: 4rem; text-align: center; padding: 3rem; }
         .bottom-cta-box { flex-direction: column; gap: 2.5rem; text-align: center; }

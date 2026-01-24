@@ -99,7 +99,7 @@
                                         <i class="fas fa-pencil-alt"></i>
                                     </a>
                                     
-                                    <form action="{{ route('recruiter.job.status', $job->id) }}" method="POST">
+                                    <form action="{{ route('recruiter.job.toggle', $job->id) }}" method="POST">
                                         @csrf
                                         @method('PATCH')
                                         <input type="hidden" name="status" value="{{ $job->status == 'active' ? 'paused' : 'active' }}">
