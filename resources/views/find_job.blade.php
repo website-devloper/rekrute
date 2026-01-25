@@ -210,68 +210,30 @@
     <style>
         /* Hero Section */
         .jobs-hero {
-            background: var(--gray-900);
-            padding: 10rem 0 6rem;
+            background: white;
+            padding: 10rem 0 4rem;
             position: relative;
             overflow: hidden;
         }
 
         .hero-bg-effects {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
+            display: none;
         }
 
         .hero-gradient {
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 100%;
-            height: 150%;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.2) 0%, transparent 60%);
+            display: none;
         }
 
         .hero-grid-pattern {
-            position: absolute;
-            inset: 0;
-            background-image: 
-                linear-gradient(rgba(99, 102, 241, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(99, 102, 241, 0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
+            display: none;
         }
 
         .floating-shapes .shape {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.4;
+            display: none;
         }
 
-        .shape-1 {
-            width: 300px;
-            height: 300px;
-            background: var(--primary);
-            top: 10%;
-            left: 10%;
-            animation: float 8s ease-in-out infinite;
-        }
-
-        .shape-2 {
-            width: 200px;
-            height: 200px;
-            background: #ec4899;
-            bottom: 20%;
-            right: 20%;
-            animation: float 10s ease-in-out infinite reverse;
-        }
-
-        .shape-3 {
-            width: 150px;
-            height: 150px;
-            background: #06b6d4;
-            top: 50%;
-            right: 10%;
-            animation: float 12s ease-in-out infinite;
+        .shape-1, .shape-2, .shape-3 {
+            display: none;
         }
 
         @keyframes float {
@@ -304,20 +266,20 @@
         .hero-title {
             font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 800;
-            color: white;
+            color: var(--gray-900);
             margin-bottom: 1.25rem;
             letter-spacing: -0.02em;
         }
 
         .text-gradient {
-            background: linear-gradient(135deg, var(--primary-light), #c084fc);
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero-subtitle {
             font-size: 1.25rem;
-            color: var(--gray-400);
+            color: var(--gray-600);
             margin-bottom: 2.5rem;
         }
 

@@ -118,7 +118,7 @@
                                         </div>
                                     </div>
                                     <div style="flex-shrink: 0;">
-                                        <a href="{{ route('job-details', $job->id) }}" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #eff6ff; color: #6366f1; font-weight: 700; padding: 0.75rem 1.5rem; border-radius: 0.75rem; text-decoration: none; transition: all 0.2s;">
+                                        <a href="{{ route('job-details', $job->id) }}" class="apply-btn" style="display: inline-flex; align-items: center; gap: 0.5rem; background: #eff6ff; color: #6366f1; font-weight: 700; padding: 0.75rem 1.5rem; border-radius: 0.75rem; text-decoration: none; transition: all 0.2s;">
                                             Apply Now <i class="fas fa-arrow-right"></i>
                                         </a>
                                     </div>
@@ -140,7 +140,7 @@
 
     <style>
         .channel-social a:hover { transform: translateY(-3px); }
-        .job-card-row:hover { border-color: #6366f1; box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.15); transform: translateY(-2px); }
-        .job-card-row:hover a { background: #6366f1; color: white; }
+        .job-card-row:hover { border-color: #6366f1; box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.15); transform: translateY(-2px); background: transparent; }
+        .job-card-row:hover .apply-btn { background: #6366f1; color: white; }
     </style>
 @endsection

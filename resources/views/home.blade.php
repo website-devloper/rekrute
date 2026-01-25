@@ -633,7 +633,7 @@
         .input-divider { display: none; }
         .hero-search-form .input-group { width: 100%; padding: 1rem; border-bottom: 1px solid #f1f5f9; }
         .hero-search-form .input-group:last-child { border-bottom: none; }
-        .btn-search { width: 100%; padding: 1rem; justify-content: center; border-radius: 15px; margin-top: 0.5rem; }
+        .btn-search { background: #6366f1; color: white; border: none; padding: 0.75rem 2rem; border-radius: 100px; font-weight: 600; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 0.5rem; font-size: 1rem; line-height: 1; height: auto; } .btn-search:hover { background: #4f46e5; color: white; transform: translateY(-1px); }
         
         .cta-newsletter-card { flex-direction: column; gap: 4rem; text-align: center; padding: 3rem; }
         .bottom-cta-box { flex-direction: column; gap: 2.5rem; text-align: center; }

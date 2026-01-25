@@ -5,7 +5,7 @@
             <div class="logo-icon">
                 <i class="fas fa-rocket"></i>
             </div>
-            <span class="logo-text">Rekrify<span class="dot">.</span></span>
+            <span class="logo-text">Rekrify</span>
         </a>
 
         <!-- Desktop Navigation -->
@@ -49,7 +49,7 @@
                     Employer Dashboard
                 </a>
             @else
-                <a href="{{ route('sign_in') }}" class="btn-login">Sign In</a>
+                <a href="{{ route('sign_in') }}" class="btn-sign-in">Sign In</a>
                 <a href="{{ route('sign_up') }}" class="btn btn-primary">Join Now</a>
             @endauth
         </div>
@@ -65,7 +65,7 @@
     <div class="mobile-menu-overlay" id="mobileMenu">
         <div class="mobile-menu-inner">
             <div class="mobile-menu-header">
-                <span class="logo-text">Rekrify<span class="dot">.</span></span>
+                <span class="logo-text">Rekrify</span>
                 <button class="close-mobile" onclick="toggleMobileMenu()">&times;</button>
             </div>
             <div class="mobile-links">
@@ -93,33 +93,29 @@
         left: 0;
         right: 0;
         z-index: 1000;
-        background: transparent;
+        background: white;
         transition: all 0.3s ease;
-        padding: 0.75rem 0;
-    }
-
-    .navbar.scrolled {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(20px);
+        padding: 1rem 0;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        border-bottom: 1px solid var(--gray-100);
     }
 
     .navbar-container {
         max-width: 1280px;
         margin: 0 auto;
         padding: 0 1.5rem;
-        display: flex;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
         align-items: center;
+        gap: 2rem;
     }
 
     /* Logo */
     .navbar-logo {
         display: flex;
         align-items: center;
-        gap: 0.75rem;
+        gap: 0.625rem;
         text-decoration: none;
+        justify-self: start;
     }
 
     .logo-icon {
@@ -143,17 +139,14 @@
         letter-spacing: -0.02em;
     }
 
-    .logo-text .dot {
-        color: var(--primary);
-    }
-
     /* Navigation Menu */
     .nav-menu {
         display: flex;
-        gap: 2rem;
+        gap: 2.5rem;
         list-style: none;
         margin: 0;
         padding: 0;
+        justify-self: center;
     }
 
     .nav-link {
@@ -166,27 +159,9 @@
         transition: color 0.2s ease;
     }
 
-    .nav-link::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: 0;
-        height: 2px;
-        background: var(--primary);
-        border-radius: 2px;
-        transition: all 0.2s ease;
-        transform: translateX(-50%);
-    }
-
     .nav-link:hover,
     .nav-link.active {
         color: var(--gray-900);
-    }
-
-    .nav-link:hover::after,
-    .nav-link.active::after {
-        width: 100%;
     }
 
     /* Action Buttons */
@@ -194,19 +169,26 @@
         display: flex;
         align-items: center;
         gap: 1rem;
+        justify-self: end;
     }
 
-    .btn-login {
-        color: var(--gray-600);
+    /* Sign In Button */
+    .btn-sign-in {
+        color: var(--gray-700);
         font-weight: 600;
         font-size: 0.9375rem;
         text-decoration: none;
-        padding: 0.5rem 1rem;
-        transition: color 0.2s;
+        padding: 0.625rem 1.25rem;
+        border-radius: 0.75rem;
+        transition: all 0.2s;
+        border: 1px solid var(--gray-200);
+        background: white;
     }
 
-    .btn-login:hover {
-        color: var(--primary);
+    .btn-sign-in:hover {
+        background: var(--gray-50);
+        border-color: var(--gray-300);
+        color: var(--gray-900);
     }
 
     /* User Dropdown */
@@ -444,15 +426,6 @@
         document.getElementById('mobileMenu').classList.toggle('show');
         document.body.style.overflow = document.getElementById('mobileMenu').classList.contains('show') ? 'hidden' : '';
     }
-
-    window.addEventListener('scroll', function() {
-        const navbar = document.getElementById('mainNavbar');
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-    });
 
     window.onclick = function(event) {
         if (!event.target.closest('.user-dropdown')) {
