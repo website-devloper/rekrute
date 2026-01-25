@@ -98,7 +98,7 @@
     <!-- Featured Jobs -->
     <section class="jobs-section bg-soft">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header with-right-btn">
                 <div>
                     <span class="sub-header">Latest Openings</span>
                     <h2>Featured Opportunities</h2>
@@ -211,7 +211,7 @@
     <!-- Top Employers -->
     <section class="employers-section">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header with-right-btn">
                 <div>
                     <span class="sub-header">Collaborations</span>
                     <h2>Top Hiring Companies</h2>
@@ -347,6 +347,21 @@
     .section-header.text-center p { margin: 0 auto; }
     .section-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; }
     .section-header.text-center { display: block; }
+    
+    .section-header.with-right-btn {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: end;
+        gap: 1rem;
+    }
+    .section-header.with-right-btn > div {
+        grid-column: 2;
+        text-align: center;
+    }
+    .section-header.with-right-btn > a {
+        grid-column: 3;
+        justify-self: end;
+    }
 
     /* Hero Section */
     .hero-section { padding: 8rem 0 6rem; position: relative; background: #ffffff; }
@@ -642,6 +657,10 @@
     }
 
     @media (max-width: 768px) {
+        .section-header.with-right-btn {
+            display: flex;
+            flex-direction: column;
+        }
         .hero-text h1 { font-size: 2.75rem; }
         .section-header { flex-direction: column; align-items: center; text-align: center; }
         .features-grid, .jobs-grid, .employers-grid-modern, .testimonials-slider-view { grid-template-columns: 1fr; }
