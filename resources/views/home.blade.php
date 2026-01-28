@@ -217,7 +217,6 @@
                     <h2>Top Hiring Companies</h2>
                     <p>Work with the innovators leading their respective industries</p>
                 </div>
-                <a href="{{ route('companies') }}" class="btn-link-premium">Discover More <i class="fas fa-chevron-right"></i></a>
             </div>
             <div class="employers-grid-modern">
                 @foreach($featuredCompanies->take(8) as $company)
@@ -239,6 +238,7 @@
                 </a>
                 @endforeach
             </div>
+                <a href="{{ route('companies') }}" class="btn-link-premium">Discover More <i class="fas fa-chevron-right"></i></a>
         </div>
     </section>
 
