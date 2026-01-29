@@ -34,3 +34,8 @@ RUN php artisan config:clear && \
     php artisan view:clear
 
 CMD ["php-fpm"]
+
+
+
+
+
