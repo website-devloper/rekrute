@@ -21,8 +21,8 @@ php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 
-# Run migrations
-php artisan migrate --force
+# Run migrations (we add || true so it doesn't crash the container if DB is missing)
+php artisan migrate --force || echo "==> Migrations failed (maybe DB is not connected yet), continuing anyway..."
 
 # Create storage link
 php artisan storage:link 2>/dev/null || true
