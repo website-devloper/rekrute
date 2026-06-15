@@ -21,4 +21,9 @@ class candidate extends Authenticatable
     {
         return $this->hasMany(application::class);
     }
+
+    protected static function newFactory()
+    {
+        return \Database\Factories\CandidateFactory::new();
+    }
 }

@@ -72,4 +72,9 @@ class application extends Model
             default => 'fa-question-circle'
         };
     }
+
+    protected static function newFactory()
+    {
+        return \Database\Factories\ApplicationFactory::new();
+    }
 }

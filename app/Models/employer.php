@@ -23,4 +23,9 @@ class employer extends Authenticatable
     {
         return $this->hasMany(Job::class);
     }
+
+    protected static function newFactory()
+    {
+        return \Database\Factories\EmployerFactory::new();
+    }
 }
