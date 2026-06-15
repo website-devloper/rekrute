@@ -45,7 +45,7 @@ WORKDIR /var/www
 
 # Copy composer files first (for Docker cache)
 COPY composer.json composer.lock ./
-RUN composer install --no-dev --optimize-autoloader --no-scripts --no-interaction
+RUN composer install --optimize-autoloader --no-scripts --no-interaction
 
 # Copy the rest of the application
 COPY . .
