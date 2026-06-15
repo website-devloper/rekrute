@@ -1,0 +1,41 @@
+# Render Blueprint — Infrastructure-as-Code
+# https://render.com/docs/blueprint-spec
+
+databases:
+  - name: rekrute-db
+    databaseName: rekrute
+    plan: free
+    region: frankfurt  # Closest to Morocco
+
+services:
+  - type: web
+    name: rekrute
+    runtime: docker
+    plan: free
+    region: frankfurt
+    dockerfilePath: ./dockerfile
+    envVars:
+      - key: APP_NAME
+        value: Rekrute
+      - key: APP_ENV
+        value: production
+      - key: APP_DEBUG
+        value: "false"
+      - key: APP_KEY
+        generateValue: true
+      - key: APP_URL
+        value: https://rekrute.onrender.com
+      - key: LOG_CHANNEL
+        value: stderr
+      - key: DB_CONNECTION
+        value: pgsql
+      - key: DATABASE_URL
+        fromDatabase:
+          name: rekrute-db
+          property: connectionString
+      - key: SESSION_DRIVER
+        value: cookie
+      - key: CACHE_DRIVER
+        value: file
+      - key: QUEUE_CONNECTION
+        value: sync

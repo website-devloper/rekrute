@@ -19,3 +19,7 @@ yarn-error.log
 /.vscode
 
 .vercel
+# Do NOT ignore these deployment files:
+# docker/
+# render.yaml
+# .dockerignore

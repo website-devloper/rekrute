@@ -1,41 +1,78 @@
-# Stage 1 - Build Frontend (Vite)
-FROM node:18 AS frontend
+# ============================================
+# Stage 1 - Build Frontend Assets (Vite)
+# ============================================
+FROM node:18-alpine AS frontend
 WORKDIR /app
 COPY package*.json ./
-RUN npm install
+RUN npm ci
 COPY . .
 RUN npm run build
 
-# Stage 2 - Backend (Laravel + PHP + Composer)
-FROM php:8.2-fpm AS backend
+# ============================================
+# Stage 2 - Production (PHP 8.2 + Nginx)
+# ============================================
+FROM php:8.2-fpm-alpine
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
-    git curl unzip libpq-dev libonig-dev libzip-dev zip \
-    && docker-php-ext-install pdo pdo_mysql mbstring zip
+# Install system dependencies + PostgreSQL + Nginx + Supervisor
+RUN apk add --no-cache \
+    nginx \
+    supervisor \
+    git \
+    curl \
+    unzip \
+    libpq-dev \
+    oniguruma-dev \
+    libzip-dev \
+    zip \
+    freetype-dev \
+    libjpeg-turbo-dev \
+    libpng-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install \
+        pdo \
+        pdo_pgsql \
+        pgsql \
+        mbstring \
+        zip \
+        gd \
+        opcache
 
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www
 
-# Copy app files
+# Copy composer files first (for Docker cache)
+COPY composer.json composer.lock ./
+RUN composer install --no-dev --optimize-autoloader --no-scripts --no-interaction
+
+# Copy the rest of the application
 COPY . .
 
-# Copy built frontend from Stage 1
-COPY --from=frontend /app/public/dist ./public/dist
+# Run composer scripts after full copy
+RUN composer dump-autoload --optimize
 
-# Install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader
+# Copy built frontend assets from Stage 1
+COPY --from=frontend /app/public/build ./public/build
 
-# Laravel setup
-RUN php artisan config:clear && \
-    php artisan route:clear && \
-    php artisan view:clear
+# Copy Nginx config
+COPY docker/nginx.conf /etc/nginx/http.d/default.conf
 
-CMD ["php-fpm"]
+# Copy Supervisor config
+COPY docker/supervisord.conf /etc/supervisord.conf
 
+# Copy entrypoint script
+COPY docker/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
+# Set proper permissions
+RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache \
+    && chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 
+# Create nginx pid directory
+RUN mkdir -p /run/nginx
 
+# Expose the port Render will use
+EXPOSE 10000
 
+ENTRYPOINT ["/entrypoint.sh"]
