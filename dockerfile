@@ -55,8 +55,8 @@ RUN composer dump-autoload --optimize
 # Copy built frontend assets from Stage 1
 COPY --from=frontend /app/public/build ./public/build
 
-# Copy Nginx config
-COPY docker/nginx.conf /etc/nginx/http.d/default.conf
+# Copy Nginx config as template (PORT gets substituted at runtime)
+COPY docker/nginx.conf /etc/nginx/http.d/default.conf.template
 
 # Copy Supervisor config
 COPY docker/supervisord.conf /etc/supervisord.conf
@@ -72,7 +72,7 @@ RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache \
 # Create nginx pid directory
 RUN mkdir -p /run/nginx
 
-# Expose the port Render will use
-EXPOSE 10000
+# Railway injects PORT dynamically
+EXPOSE ${PORT:-8080}
 
 ENTRYPOINT ["/entrypoint.sh"]

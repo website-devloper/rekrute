@@ -3,6 +3,14 @@ set -e
 
 cd /var/www
 
+# Default port if not set by Railway
+export PORT="${PORT:-8080}"
+
+# Substitute the PORT variable into nginx config
+envsubst '${PORT}' < /etc/nginx/http.d/default.conf.template > /etc/nginx/http.d/default.conf
+
+echo "==> Starting on port $PORT"
+
 # Generate app key if not set
 if [ -z "$APP_KEY" ]; then
     php artisan key:generate --force
