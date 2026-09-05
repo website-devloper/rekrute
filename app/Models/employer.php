@@ -24,6 +24,21 @@ class employer extends Authenticatable
         return $this->hasMany(Job::class);
     }
 
+    /**
+     * Company logo URL. New uploads are absolute Vercel Blob URLs; older rows
+     * hold a bare filename that lived in public/image.
+     */
+    public function getLogoAttribute(): ?string
+    {
+        if (! $this->logo_url) {
+            return null;
+        }
+
+        return str_starts_with($this->logo_url, 'http')
+            ? $this->logo_url
+            : asset('image/'.$this->logo_url);
+    }
+
     protected static function newFactory()
     {
         return \Database\Factories\EmployerFactory::new();

@@ -22,6 +22,32 @@ class candidate extends Authenticatable
         return $this->hasMany(application::class);
     }
 
+    /**
+     * Profile picture URL. New uploads are absolute Vercel Blob URLs; older
+     * rows hold a relative path on the public disk.
+     */
+    public function getPhotoUrlAttribute(): ?string
+    {
+        return $this->resolveUploadUrl($this->img_url, 'storage/');
+    }
+
+    /**
+     * Resume URL, same relative/absolute handling as the profile picture.
+     */
+    public function getResumeUrlAttribute(): ?string
+    {
+        return $this->resolveUploadUrl($this->resume, 'storage/');
+    }
+
+    protected function resolveUploadUrl(?string $value, string $legacyPrefix): ?string
+    {
+        if (! $value) {
+            return null;
+        }
+
+        return str_starts_with($value, 'http') ? $value : asset($legacyPrefix.$value);
+    }
+
     protected static function newFactory()
     {
         return \Database\Factories\CandidateFactory::new();

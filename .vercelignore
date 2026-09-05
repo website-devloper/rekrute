@@ -1,9 +1,15 @@
 .env
+.env.backup
+.env.production
 /vendor
 /node_modules
 /storage/*.key
-/storage/app
-/storage/framework
 /storage/logs
 /tests
 /phpunit.xml
+/docker
+/dockerfile
+/render.yaml
+/railway.toml
+/.dockerignore
+/public/storage

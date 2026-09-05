@@ -7,7 +7,7 @@
         <div class="container" style="position: relative; z-index: 1;">
             <div style="background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 2rem; padding: 3rem; display: flex; align-items: center; gap: 3rem;" data-aos="fade-up">
                 <div style="flex-shrink: 0; width: 140px; height: 140px; background: white; border-radius: 1.5rem; display: flex; align-items: center; justify-content: center; padding: 1.5rem; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.2));">
-                    <img src="{{ $company->logo_url ? asset('image/' . $company->logo_url) : asset('image/logo1.png') }}" alt="{{ $company->name }}" style="width: 100%; height: 100%; object-fit: contain;">
+                    <img src="{{ $company->logo_url ? $company->logo : asset('image/logo1.png') }}" alt="{{ $company->name }}" style="width: 100%; height: 100%; object-fit: contain;">
                 </div>
                 <div style="color: white; flex: 1;">
                     <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem;">

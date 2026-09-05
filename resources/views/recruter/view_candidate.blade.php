@@ -7,7 +7,7 @@
         <div class="sidebar-header">
             <div class="company-logo">
                 @if($employer->logo_url)
-                    <img src="{{ asset('image/' . $employer->logo_url) }}" alt="{{ $employer->name }}">
+                    <img src="{{ $employer->logo }}" alt="{{ $employer->name }}">
                 @else
                     <i class="fas fa-building"></i>
                 @endif
@@ -35,7 +35,7 @@
                 <h1>Candidate Profile</h1>
             </div>
             @if($candidate->resume)
-            <a href="{{ asset('storage/' . $candidate->resume) }}" target="_blank" class="btn-primary-dash">
+            <a href="{{ $candidate->resume_url }}" target="_blank" class="btn-primary-dash">
                 <i class="fas fa-file-download"></i> Download Resume
             </a>
             @endif
@@ -47,7 +47,7 @@
                 <div class="profile-header">
                     <div class="profile-avatar">
                         @if($candidate->img_url)
-                            <img src="{{ asset('storage/' . $candidate->img_url) }}" alt="{{ $candidate->first_name }}">
+                            <img src="{{ $candidate->photo_url }}" alt="{{ $candidate->first_name }}">
                         @else
                             <span>{{ substr($candidate->first_name, 0, 1) }}</span>
                         @endif

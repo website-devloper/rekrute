@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <div class="shadow-C">
         <div class="logo-company">
-            <img src="{{asset('/CandidateImage/'.$FindCand->img_url)}}" alt="logo" width="60%" height="60%"
+            <img src="{{$FindCand->photo_url}}" alt="logo" width="60%" height="60%"
                 class="rounded-circle shadow" />
         </div>
         <h4 class="company-name"> Name</h4>

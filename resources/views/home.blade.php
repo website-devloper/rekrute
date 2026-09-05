@@ -115,7 +115,7 @@
                         <div class="employer-branding">
                             <div class="employer-logo">
                                 @if($job->employer && $job->employer->logo_url)
-                                    <img src="{{ asset('image/' . $job->employer->logo_url) }}" alt="{{ $job->employer->name }}">
+                                    <img src="{{ $job->employer->logo }}" alt="{{ $job->employer->name }}">
                                 @else
                                     <div class="logo-placeholder">{{ substr($job->employer->name ?? 'C', 0, 1) }}</div>
                                 @endif
@@ -223,7 +223,7 @@
                 <a href="{{ route('company_details', $company->id) }}" class="employer-box" data-aos="fade-up">
                     <div class="box-logo">
                         @if($company->logo_url)
-                            <img src="{{ asset('image/' . $company->logo_url) }}" alt="{{ $company->name }}">
+                            <img src="{{ $company->logo }}" alt="{{ $company->name }}">
                         @else
                             <i class="fas fa-building"></i>
                         @endif

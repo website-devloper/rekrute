@@ -7,7 +7,7 @@
         <div class="sidebar-header">
             <div class="company-logo">
                 @if($employer->logo_url)
-                    <img src="{{ asset('image/' . $employer->logo_url) }}" alt="{{ $employer->name }}">
+                    <img src="{{ $employer->logo }}" alt="{{ $employer->name }}">
                 @else
                     <i class="fas fa-building"></i>
                 @endif
@@ -104,7 +104,7 @@
                                     <div class="candidate-info">
                                         <div class="avatar-sm">
                                             @if($app->candidate && $app->candidate->img_url)
-                                                <img src="{{ asset('storage/' . $app->candidate->img_url) }}" alt="">
+                                                <img src="{{ $app->candidate->photo_url }}" alt="">
                                             @else
                                                 <span>{{ $app->candidate ? substr($app->candidate->first_name, 0, 1) : '?' }}</span>
                                             @endif

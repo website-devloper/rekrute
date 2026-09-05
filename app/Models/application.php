@@ -36,6 +36,21 @@ class application extends Model
     }
 
     /**
+     * Resume URL captured at application time, falling back to whatever the
+     * candidate currently has on file.
+     */
+    public function getResumeUrlAttribute(): ?string
+    {
+        $value = $this->resume ?: $this->candidate?->resume;
+
+        if (! $value) {
+            return null;
+        }
+
+        return str_starts_with($value, 'http') ? $value : asset('storage/'.$value);
+    }
+
+    /**
      * Get applied time ago
      */
     public function getAppliedAtAttribute()

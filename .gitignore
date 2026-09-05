@@ -23,3 +23,4 @@ yarn-error.log
 # docker/
 # render.yaml
 # .dockerignore
+.vercel

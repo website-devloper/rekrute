@@ -24,7 +24,7 @@
                     <button class="btn-profile" onclick="toggleDropdown()">
                         <div class="avatar-sm">
                             @if(auth('candidate')->user()->img_url)
-                                <img src="{{ asset('storage/' . auth('candidate')->user()->img_url) }}" alt="">
+                                <img src="{{ auth('candidate')->user()->photo_url }}" alt="">
                             @else
                                 {{ substr(auth('candidate')->user()->first_name, 0, 1) }}
                             @endif

@@ -7,7 +7,7 @@
         <div class="sidebar-header">
             <div class="company-logo">
                 @if($employer->logo_url)
-                    <img src="{{ asset('image/' . $employer->logo_url) }}" alt="{{ $employer->name }}">
+                    <img src="{{ $employer->logo }}" alt="{{ $employer->name }}">
                 @else
                     <i class="fas fa-building"></i>
                 @endif
@@ -79,7 +79,7 @@
                 <div class="card-header">
                     <div class="applicant-avatar">
                         @if($application->candidate && $application->candidate->img_url)
-                            <img src="{{ asset('storage/' . $application->candidate->img_url) }}" alt="">
+                            <img src="{{ $application->candidate->photo_url }}" alt="">
                         @else
                             <span>{{ $application->candidate ? substr($application->candidate->first_name, 0, 1) : '?' }}</span>
                         @endif
@@ -120,7 +120,7 @@
                     
                     <div class="card-actions">
                         @if($application->resume || ($application->candidate && $application->candidate->resume))
-                            <a href="{{ asset('storage/' . ($application->resume ?? $application->candidate->resume)) }}" target="_blank" class="btn-action" title="View Resume">
+                            <a href="{{ $application->resume_url }}" target="_blank" class="btn-action" title="View Resume">
                                 <i class="fas fa-file-pdf"></i>
                             </a>
                         @endif

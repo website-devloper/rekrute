@@ -7,7 +7,7 @@
         <div class="sidebar-header">
             <div class="company-logo">
                 @if($employer->logo_url)
-                    <img src="{{ asset('image/' . $employer->logo_url) }}" alt="{{ $employer->name }}">
+                    <img src="{{ $employer->logo }}" alt="{{ $employer->name }}">
                 @else
                     <i class="fas fa-building"></i>
                 @endif

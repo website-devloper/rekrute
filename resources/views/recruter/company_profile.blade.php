@@ -7,7 +7,7 @@
         <div class="sidebar-header">
             <div class="company-logo">
                 @if($employer->logo_url)
-                    <img src="{{ asset('image/' . $employer->logo_url) }}" alt="{{ $employer->name }}">
+                    <img src="{{ $employer->logo }}" alt="{{ $employer->name }}">
                 @else
                     <i class="fas fa-building"></i>
                 @endif
@@ -145,7 +145,7 @@
                         <label>Company Logo</label>
                         <div class="logo-upload-wrapper">
                             @if($employer->logo_url)
-                                <img src="{{ asset('image/' . $employer->logo_url) }}" class="current-logo" alt="Current Logo">
+                                <img src="{{ $employer->logo }}" class="current-logo" alt="Current Logo">
                             @endif
                             <div class="file-input-container">
                                 <input type="file" name="logo" id="logo" class="file-input" accept="image/*">

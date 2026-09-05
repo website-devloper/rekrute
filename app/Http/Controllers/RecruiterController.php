@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use App\Services\VercelBlob;
 
 class RecruiterController extends Controller
 {
@@ -49,7 +50,7 @@ class RecruiterController extends Controller
         // Application trend (last 7 days)
         $applicationTrend = application::whereIn('job_id', $jobIds)
             ->where('created_at', '>=', now()->subDays(7))
-            ->selectRaw('DATE(created_at) as date, COUNT(*) as count')
+            ->selectRaw('CAST(created_at AS DATE) as date, COUNT(*) as count')
             ->groupBy('date')
             ->orderBy('date')
             ->get();
@@ -101,10 +102,8 @@ class RecruiterController extends Controller
         
         // Handle logo upload
         if ($request->hasFile('logo')) {
-            $file = $request->file('logo');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('image'), $filename);
-            $data['logo_url'] = $filename;
+            VercelBlob::delete($employer->logo_url);
+            $data['logo_url'] = VercelBlob::put($request->file('logo'), 'logos');
         }
         
         $employer->update($data);
@@ -324,10 +323,10 @@ class RecruiterController extends Controller
         if ($request->has('search') && !empty($request->search)) {
             $search = $request->search;
             $query->where(function($q) use ($search) {
-                $q->where('first_name', 'like', "%{$search}%")
-                  ->orWhere('last_name', 'like', "%{$search}%")
-                  ->orWhere('job_title', 'like', "%{$search}%")
-                  ->orWhere('city', 'like', "%{$search}%");
+                $q->where('first_name', $this->like(), "%{$search}%")
+                  ->orWhere('last_name', $this->like(), "%{$search}%")
+                  ->orWhere('job_title', $this->like(), "%{$search}%")
+                  ->orWhere('city', $this->like(), "%{$search}%");
             });
         }
         

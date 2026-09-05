@@ -142,7 +142,7 @@
                             <div class="job-card-header">
                                 <div class="company-logo">
                                     @if($job->employer && $job->employer->logo_url)
-                                        <img src="{{ Str::startsWith($job->employer->logo_url, 'http') ? $job->employer->logo_url : asset('storage/' . $job->employer->logo_url) }}" alt="{{ $job->employer->name }}">
+                                        <img src="{{ Str::startsWith($job->employer->logo_url, 'http') ? $job->employer->logo_url : $job->employer->logo }}" alt="{{ $job->employer->name }}">
                                     @else
                                         <div class="logo-placeholder">
                                             <i class="fas fa-building"></i>

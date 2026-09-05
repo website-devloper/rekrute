@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Services\VercelBlob;
 use App\Models\employer;
 use App\Models\candidate;
 
@@ -39,12 +41,8 @@ class RecruterController extends Controller
         $EforUpdate->Expertise = $request->Expertise;
 
        if ($request->hasFile('filename')) {
-        $file_extension_image = $request->file('filename')->getClientOriginalExtension();
-        sleep(0.1);
-        $file_name_image = time() . '.' . $file_extension_image;
-        $path = 'images';
-        $request->file('filename')->move($path, $file_name_image);
-        $EforUpdate->logo_url= $file_name_image;
+        VercelBlob::delete($EforUpdate->logo_url);
+        $EforUpdate->logo_url = VercelBlob::put($request->file('filename'), 'logos');
     }
 
         $EforUpdate->save();

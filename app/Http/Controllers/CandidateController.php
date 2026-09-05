@@ -8,6 +8,7 @@ use App\Models\candidate;
 use App\Models\application;
 use App\Models\Job;
 use Illuminate\Support\Facades\Storage;
+use App\Services\VercelBlob;
 
 class CandidateController extends Controller
 {
@@ -98,7 +99,7 @@ class CandidateController extends Controller
             'country' => 'nullable|string|max:100',
             'job_title' => 'nullable|string|max:255',
             'about' => 'nullable|string',
-            'resume' => 'nullable|mimes:pdf,doc,docx|max:5120',
+            'resume' => 'nullable|mimes:pdf,doc,docx|max:4096',
             'img_url' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
         
@@ -106,21 +107,14 @@ class CandidateController extends Controller
 
         // Handle resume upload
         if ($request->hasFile('resume')) {
-            // Delete old resume if exists
-            if ($candidate->resume && Storage::disk('public')->exists($candidate->resume)) {
-                Storage::disk('public')->delete($candidate->resume);
-            }
-            $path = $request->file('resume')->store('resumes', 'public');
-            $data['resume'] = $path;
+            VercelBlob::delete($candidate->resume);
+            $data['resume'] = VercelBlob::put($request->file('resume'), 'resumes');
         }
-        
+
         // Handle profile image upload
         if ($request->hasFile('img_url')) {
-            if ($candidate->img_url && Storage::disk('public')->exists($candidate->img_url)) {
-                Storage::disk('public')->delete($candidate->img_url);
-            }
-            $imagePath = $request->file('img_url')->store('avatars', 'public');
-            $data['img_url'] = $imagePath;
+            VercelBlob::delete($candidate->img_url);
+            $data['img_url'] = VercelBlob::put($request->file('img_url'), 'avatars');
         }
 
         $candidate->update($data);

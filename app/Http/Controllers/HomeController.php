@@ -49,11 +49,11 @@ class HomeController extends Controller
         if ($request->has('query') && $request->filled('query')) {
             $search = $request->input('query');
             $query->where(function($q) use ($search) {
-                $q->where('title', 'like', "%{$search}%")
-                  ->orWhere('description', 'like', "%{$search}%")
-                  ->orWhere('job_category', 'like', "%{$search}%")
+                $q->where('title', $this->like(), "%{$search}%")
+                  ->orWhere('description', $this->like(), "%{$search}%")
+                  ->orWhere('job_category', $this->like(), "%{$search}%")
                   ->orWhereHas('employer', function($q) use ($search) {
-                      $q->where('name', 'like', "%{$search}%");
+                      $q->where('name', $this->like(), "%{$search}%");
                   });
             });
         }
@@ -61,9 +61,9 @@ class HomeController extends Controller
         if ($request->has('location') && $request->filled('location')) {
             $location = $request->input('location');
             $query->where(function($q) use ($location) {
-                $q->where('city', 'like', "%{$location}%")
-                  ->orWhere('country', 'like', "%{$location}%")
-                  ->orWhere('job_type', 'like', "%{$location}%");
+                $q->where('city', $this->like(), "%{$location}%")
+                  ->orWhere('country', $this->like(), "%{$location}%")
+                  ->orWhere('job_type', $this->like(), "%{$location}%");
             });
         }
 

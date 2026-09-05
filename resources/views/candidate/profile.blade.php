@@ -7,7 +7,7 @@
         <div class="sidebar-header">
             <div class="user-avatar">
                 @if($candidate->img_url)
-                    <img src="{{ asset('storage/' . $candidate->img_url) }}" alt="{{ $candidate->first_name }}">
+                    <img src="{{ $candidate->photo_url }}" alt="{{ $candidate->first_name }}">
                 @else
                     <span>{{ substr($candidate->first_name, 0, 1) }}{{ substr($candidate->last_name, 0, 1) }}</span>
                 @endif
@@ -113,7 +113,7 @@
                                 @if($candidate->resume)
                                     <div class="current-file">
                                         <i class="fas fa-file-pdf"></i>
-                                        <a href="{{ asset('storage/' . $candidate->resume) }}" target="_blank">View Current Resume</a>
+                                        <a href="{{ $candidate->resume_url }}" target="_blank">View Current Resume</a>
                                     </div>
                                 @endif
                             </div>

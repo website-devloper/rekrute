@@ -72,7 +72,7 @@
                                 <label class="form-label font-weight-bold">Company Logo</label>
                                 <div class="d-flex align-items-center gap-3">
                                     @if($employer->logo_url)
-                                        <img src="{{ Str::startsWith($employer->logo_url, 'http') ? $employer->logo_url : asset('storage/' . $employer->logo_url) }}" alt="Logo" style="width: 64px; height: 64px; object-fit: contain; border-radius: 8px; border: 1px solid var(--gray-200);">
+                                        <img src="{{ $employer->logo }}" alt="Logo" style="width: 64px; height: 64px; object-fit: contain; border-radius: 8px; border: 1px solid var(--gray-200);">
                                     @endif
                                     <input type="file" name="logo" class="form-control">
                                 </div>
