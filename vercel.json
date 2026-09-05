@@ -12,7 +12,16 @@
     },
     "routes": [
         {
-            "handle": "filesystem"
+            "src": "/(.*\\.php.*)",
+            "dest": "/api/index.php"
+        },
+        {
+            "src": "/(assets|build|image|images|img|CandidateImage|resume)/(.*)",
+            "dest": "/$1/$2"
+        },
+        {
+            "src": "/(favicon\\.ico|robots\\.txt)",
+            "dest": "/$1"
         },
         {
             "src": "/(.*)",
